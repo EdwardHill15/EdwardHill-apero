@@ -3,8 +3,8 @@ cascade:
   headless: true
 description: |
   A Writer, Data Scientist and philosopher
-show_header: true
-sidebar_left: false
+show_header: false
+sidebar_left: true
 title: About Edward
 ---
 
