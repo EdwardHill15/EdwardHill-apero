@@ -94,12 +94,12 @@ enableEmoji = true
       icon_pack = "fab"
       url       = "https://www.youtube.com/channel/UCYLPVR3P4INUIrA61yF78-Q"
   [[params.social]]  
-      icon      = "gitlab""  
-      icon_pack = "fab"" 
+      icon      = "gitlab" 
+      icon_pack = "fab"
       url       = "https://gitlab.com/EdwardHill15"
   [[params.social]]
       icon      = "r-project"
-      icon_pack = "fab"" 
+      icon_pack = "fab" 
       url       = "https://rstudio.cloud/projects" 
   [[params.social]]
       icon      = "researchgate"  
