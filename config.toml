@@ -1,4 +1,4 @@
-baseURL = "/"
+baseURL = "https://edwardhill-apero.netlify.app"
 theme = "hugo-apero"
 languageCode = "en"
 title = "Edward Hillenaar"
@@ -141,11 +141,7 @@ enableEmoji = true
     title = "A collection"
     url = "/collection/"
     weight = 5
-  [[menu.header]]
-    name = "Elements"
-    title = "Element Page"
-    url = "/elements/"
-    weight = 6
+  
     
   # Configure footer  
   [[menu.footer]]
@@ -158,12 +154,7 @@ enableEmoji = true
     title = "Contact form"
     url = "/contact/"
     weight = 2
-  [[menu.footer]]
-    name = "Contributors"
-    title = "Contributors"
-    url = "/contributors/"
-    weight = 3
-
+  
 # see https://gohugo.io/about/hugo-and-gdpr/    
 [privacy]
   [privacy.disqus]
