@@ -1,6 +1,6 @@
 ---
 ## Configure sidebar content in narrow column
-author: "Edward Hillenaar"
+author: "Edward F. Hillenaar, MSc."
 role: "Writer - Data Scientist - Philosopher"
 avatar_shape: rounded # circle, square, rounded, leave blank to exclude
 show_social_links: true # specify social accounts in site config

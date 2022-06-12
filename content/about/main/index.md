@@ -1,6 +1,6 @@
 ---
 ## Configure page content in wide column
-title: "Metaphysics" # leave blank to exclude
+title: "The Human Mind and Total Health" # leave blank to exclude
 number_featured: 1 # pulling from mainSections in config.toml
 use_featured: false # if false, use most recent by date
 number_categories: 3 # set to zero to exclude
