@@ -8,7 +8,7 @@ show_intro: true
 intro: My research interests include psychology, philosophy and data science of the origin and nature of human consciousness.
    
 
-show_outro: true
+show_outro: false
 outro: |
   <i class="fas fa-glass-cheers pr2"></i>Sincere thanks to [Maëlle Salmon](https://masalmon.eu/) for her help naming this Hugo theme!
 ---
