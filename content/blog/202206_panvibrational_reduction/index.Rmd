@@ -14,12 +14,12 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # **Introduction**
 
-This ontology of mind and consciousness postulates a **reduction base** by which it can explain how an **image of the external world** is created and experienced. The **panvibrational reduction base** explains and formulates which **psycho-physical laws** are involved (f.e.; Gibson's invariance laws, optical flow fields, etc.) that explain the generation and perception of a **holographic image** of external events and happenings in and of the human mind. 
+This ontology of mind and consciousness postulates a **reduction base** by which it can explain how an **image of the external world** is created and experienced. The **panvibrational reduction base** explains and formulates which **psycho-physical laws** are involved (f.e.; Gibson's invariance laws, optical flow fields, etc.) that explain the generation and perception of a **holographic image** of external events and happenings in, by and of the human mind. 
 
-In this ontology of mind and consciousness, the reduction base is called "**Panvibration**" and the underlying crucial psycho-physical laws were first formulated by the late psychologist James Gibson and his work on the nature and psycho-physical mechanisms of **visual perception** [@Gibson1950]. The Philosophy of Mind of Henri Bergson also plays a fundamental role in this ontological theory with the **ultimate metaphysical goal** of solving the "**Hard Problem of Consciousness**" [@Chalmers1995]. 
+In this ontology of mind and consciousness, the reduction base is called "**Panvibration**" and the underlying crucial psycho-physical laws were first formulated by the late psychologist James Gibson and his work on the nature and psycho-physical mechanisms of **visual perception** [@Gibson1950]. The Philosophy of Mind of Henri Bergson [@Bergson1911], [@Bergson1910a], [@Bergson1922] also plays a fundamental role in this ontological theory with the **ultimate metaphysical goal** of solving the "**Hard Problem of Consciousness**" [@Chalmers1995]. 
  
  
-Other references:  [@Chalmers1995a], [@RobertLawrenceKuhn2020]. 
+Other references:  [@Chalmers1995a], [@RobertLawrenceKuhn2020]
 
 # **Data**
 
