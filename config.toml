@@ -29,7 +29,7 @@ enableEmoji = true
     
 [params]
   orgName = "Edward Hillenaar"
-  orgLocal = "Total Health Foundation"
+  orgLocal = ""
   description = "A modern, beautiful, and easily configurable blog theme for Hugo."
   favicon = "/img/favicon.ico"
   logo = "/img/TH-logo2.jpg"
