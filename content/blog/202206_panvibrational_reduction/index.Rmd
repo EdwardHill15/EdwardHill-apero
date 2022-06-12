@@ -12,6 +12,10 @@ links:
   icon_pack: fab
   name: Video
   url: https://www.youtube.com/watch?v=NHMip21Hkp0&t=26s
+- icon: ""
+  icon_pack: fab
+  name: slides
+  url: https://edwardhill-xaringan-decks.netlify.app/robbins71#1
 bibliography: ["ref.bib"]
 biblio-style: "apalike"
 link-citations: true
