@@ -1,0 +1,179 @@
+---
+author: Edward F. Hillenaar, MSc. 
+categories:
+- NVM_Consciousness_ridges
+date: "2022-07-02"
+draft: false
+excerpt: A NVM_factor Distribution Ridgeplot
+layout: single
+subtitle: A NVM_factor Distribution Ridgeplot
+title: NVM Distribution over Consciousness
+external_link: ""
+image:
+  caption: Consciousness Research
+  focal_point: Smart
+links:
+- icon: github
+  icon_pack: fab
+  name: github-data
+  url: https://github.com/EdwardHill15/Data.git/
+- icon: youtube
+  icon_pack: fab
+  name: Video
+  url: 
+
+# slides: "https://edwardhill-xaringan-decks.netlify.app/robbins71#1"
+# summary: An example of using the in-built project page.
+# tags:
+url_code: ""
+url_pdf: ""
+url_slides: ""
+url_video: ""
+bibliography: ["Whitehead.bib"]
+biblio-style: "apalike"
+link-citations: true
+---
+```{r, echo = FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+require(kableExtra)
+require(broom)
+library(mgcv)
+library(ggplot2)
+library(wesanderson)
+library(psych)
+library(corrplot)
+library(dplyr)
+library(DT)
+```
+
+
+
+![NVM-Consciousness Research](https://raw.githubusercontent.com/EdwardHill15/Data/main/graphs/natural_ridgeplot_consciousness_standardize_nvmfactors.png)
+# Introduction
+
+The theoretical foundation of this article is to be found in [@Lowe1990]. Also in [@Segall2019]  and in [@Schilpp1941], [@Whitehead1929], [@Whitehead1933], [@Whitehead1919]. Another reference from the Bibliography [@Coomaraswamy2004]
+
+
+# Methods
+
+## Data
+
+```{r, echo=FALSE}
+library(readxl)
+NVM1Onderzoek <- read_excel("D:/Rmarkdown/NVM1Onderzoek.xlsx")
+NVM <- as.data.frame(NVM1Onderzoek)
+NVM <- NVM[,c(1,4:5,7:11)]
+datatable(NVM, extensions = "Buttons", 
+          options = list(dom = 'Bfrtip', 
+                         buttons = c('copy', 'csv', 'excel',
+                         'pdf', 'print')))
+```
+
+I am going to use a `dataset` and a *file*. The name of the dataset is **NVM1Onderzoek.xlsx**. 
+
+I have a [link](https://www.totalegezondheid.nl)
+
+# Statistical Analysis
+
+```{r echo=FALSE, table}
+names(NVM) <- c("Code", "Gender", "Age", "NEG", "SOM", "VERL", "PSY", "EX")
+NVM_des <- describe(NVM[2:8])
+#NVM_sum <- summary(NVM[2:8])
+NVM_Table1 <- kable(summary(NVM[2:8]), caption = "Summary NVM Database") %>% 
+  kable_styling(bootstrap_options = c("bordered", "striped", "hover", "condensed", "responsive"), full_width = FALSE) %>% 
+  #kable_material("striped") %>% 
+  #kable_material_dark("striped") %>% 
+  #kable_minimal("striped") %>% 
+  #kable_classic_2(c("hover", "striped"), font_size = 15, html_font = "sans") %>% 
+  #row_spec(2:4, italic = T, bold = T, color = "gold", background = "blue") %>% 
+  column_spec(4:8, bold = T, color = "gold", background = "blue") %>% 
+  column_spec(1:3, bold = T, background = "pink") %>% 
+  add_header_above(c("Characteristics" = 3, "NVM-Scores" = 5))
+  
+```
+
+```{r, echo=FALSE}
+library(corrplot)
+NVM_var <- (NVM[,c(4:8)]) 
+plot_cor_NVM <- print(cor.plot(NVM_var))
+```
+## Regression Analysis with PSY as outcome variable and SOM, NEG as Predictors
+
+```{r, echo=FALSE}
+fit <- lm(PSY~SOM+NEG, data = NVM)
+table_regression_NVM <- kable(tidy(fit), digits = 2, caption = "Linear Regression Model for NVM") %>% 
+  kable_styling(bootstrap_options = c("bordered", "striped", "hover", "condensed", "responsive"), full_width = F) %>% 
+
+  #kable_material("striped") %>% 
+  #kable_material_dark("striped") %>% 
+  #kable_minimal("striped") %>% 
+  #kable_classic_2(c("hover", "striped"), font_size = 15, html_font = "sans") %>% 
+  #row_spec(2:4, italic = T, bold = T, color = "gold", background = "blue") %>% 
+  column_spec(1:5, bold = T, color = "gold", background = "blue") %>% 
+  add_header_above(c("Linear Regression Coefficients for SOM and NEG" = 5))
+table_regression_NVM
+```
+
+# GAM model toegepast op de dataframe NVM met Wood's package "mgcv"
+
+
+```{r echo=FALSE}
+NVM_gam <- gam(PSY~s(NEG,SOM,EX,VERL), data = NVM_var) 
+vis.gam(NVM_gam, xlab = "predictors", zlab = "PSY outcome", main = "PSY ~ predictors")
+```
+
+# Results
+
+
+# Plots examples
+```{r, echo=FALSE}
+NVM$Gender[NVM$Gender == "f"] <- "Vrouw"
+NVM$Gender[NVM$Gender == "m"] <- "Man"
+
+theme_ed2 <- theme(axis.line.y = element_line(colour = "black", size = 0.1),
+                     axis.line.x = element_line(colour = "black", size = 0.1),
+                     panel.grid.minor = element_blank(),
+                     panel.background = element_rect(fill="grey95"),
+                     panel.border = element_rect(colour = "black", fill = NA),
+                     axis.title.x = element_text(size = 20, margin = margin(5,0,0,0)),
+                     axis.title.y = element_text(size = 20, margin = margin(0,10,0,0)),
+                     axis.text = element_text(size = 16, colour = "black"),
+                     axis.text.x = element_text(margin = margin(t=5)),
+                     plot.title = element_text(size = 32, hjust = 0),
+                     strip.text = element_text(size = 14, face = "bold"),
+                     strip.background = element_rect(colour = "black"),
+                     panel.spacing = unit(0,"lines")
+)
+
+bp <- ggplot(NVM, aes(x=Gender, y=SOM)) +
+  geom_boxplot(fill='#A4A4A4', color="darkred")
+
+
+bp2 <- ggplot(NVM, aes(x=Gender, y=EX, fill=Gender)) +
+  geom_point(position = position_jitter(0.2), size = 2, shape = 21) +
+  geom_boxplot(alpha=0.8, notch = TRUE)
+
+#bp
+#bp + scale_fill_hue(l=40, c=35)
+#bp + scale_fill_manual(values=c("#999999", "#E69F00"))
+#bp
+#bp + scale_fill_manual(breaks = c("2", "1"), 
+ #                      values=c("red", "blue"))
+
+#bp + scale_fill_brewer(palette="Blues")
+
+#bp+scale_fill_manual(values=wes_palette(n=3, name="Moonrise2"))
+
+bp + scale_fill_grey() + theme_classic()
+bp2 + scale_fill_grey(start=0.8, end=0.5) + theme_classic() + theme_ed2 + ggtitle("Exraversie naar Geslacht") + 
+  theme(plot.title = element_text(hjust = 0.5))
+
+```
+
+# SCL dataframe
+
+# Summary and Conclusions
+
+# References
+
+
