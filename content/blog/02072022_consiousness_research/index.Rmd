@@ -4,7 +4,7 @@ author: "Edward Hill"
 date: '2022-07-02'
 output: html_document
 ---
-```{r, echo=FALSE}
+```{r setup, include=FALSE}
 library(tidyverse)
 library(R.utils)
 library(ncdf4)
