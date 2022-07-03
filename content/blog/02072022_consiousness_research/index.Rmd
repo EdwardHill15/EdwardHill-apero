@@ -25,7 +25,7 @@ library(readr)
 ```
 
 
-![Consciousness Levels as predictors for Health Outcome ](https://raw.githubusercontent.com/EdwardHill15/Data/main/graphs/consciousness_as_predictor.png)
+![Consciousness Levels as predictors for Health Behaviour ](https://raw.githubusercontent.com/EdwardHill15/Data/main/graphs/consciousness_as_predictor2.png)
 
 ![Behaviour as Predictor for Consciousness](https://raw.githubusercontent.com/EdwardHill15/Data/main/graphs/behaviour_as_predictor.png)
 
