@@ -3,6 +3,15 @@ title: "Consciousness Research"
 author: "Edward Hillenaar"
 date: '2022-07-03'
 output: html_document
+links:
+- icon: github
+  icon_pack: fab
+  name: github-data
+  url: https://github.com/EdwardHill15/Data.git/
+- icon: youtube
+  icon_pack: fab
+  name: Video
+  url: https://www.youtube.com/watch?v=NHMip21Hkp0&t=26s
 ---
 ```{r setup, include=FALSE}
 library(tidyverse)
