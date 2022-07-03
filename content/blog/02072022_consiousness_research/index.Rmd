@@ -1,7 +1,7 @@
 ---
 title: "Consciousness Research"
 author: "Edward Hillenaar"
-date: '2022-07-02'
+date: '2022-07-03'
 output: html_document
 ---
 ```{r setup, include=FALSE}
@@ -15,4 +15,10 @@ library(ggridges)
 library(readr)
 ```
 
-![Consiousness NVM Factor Ridgeplot](https://raw.githubusercontent.com/EdwardHill15/Data/main/graphs/natural_ridgeplot_consciousness_standardize_nvmfactors.png)
+
+![Consciousness Levels as predictors for Health Outcome ](https://raw.githubusercontent.com/EdwardHill15/Data/main/graphs/consciousness_as_predictor.png)
+
+![Behaviour as Predictor for Consciousness](https://raw.githubusercontent.com/EdwardHill15/Data/main/graphs/behaviour_as_predictor.png)
+
+
+
