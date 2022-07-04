@@ -25,9 +25,9 @@ library(readr)
 ```
 
 
-![Consciousness Levels as predictors for Health Behaviour ](https://raw.githubusercontent.com/EdwardHill15/Data/main/graphs/consciousness_as_predictor2.png)
+![Consciousness Levels as predictors for Health Behaviour ](https://raw.githubusercontent.com/EdwardHill15/Data/main/graphs/consciousness_predictor_NVM_SCL2.png)
 
-![Behaviour as Predictor for Consciousness](https://raw.githubusercontent.com/EdwardHill15/Data/main/graphs/behaviour_as_predictor.png)
+![Behaviour as Predictor for Consciousness](https://raw.githubusercontent.com/EdwardHill15/Data/main/graphs/behaviour_predictor_NVM_SCL2.png)
 
-
+![Correlation Matrix Behaviour Factors as Predictor for Consciousness](https://raw.githubusercontent.com/EdwardHill15/Data/main/graphs/NVM_SCL_corrplot.png)
 
