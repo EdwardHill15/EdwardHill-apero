@@ -1,0 +1,22 @@
+---
+title: "Global Temperature Anomalies between 1950 and 2021"
+author: "Edward Hill"
+date: '2022-07-05'
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+![Global Annual Temperature Anomalies Between 1950 and 2021](https://raw.githubusercontent.com/EdwardHill15/climate_viz/main/figures/global_anomaly.png)
+
+![Global Temperature Change (1880-2022)](https://raw.githubusercontent.com/EdwardHill15/climate_viz/main/figures/climate_spiral.png)
+
+![Tornado Climate 1880 - 2021](https://raw.githubusercontent.com/EdwardHill15/climate_viz/main/figures/climate_tornado.png)
+
+![Land Anomaly Temperature Distribution](https://raw.githubusercontent.com/EdwardHill15/climate_viz/main/figures/temp_distribution.png)
+
+![Global Temperatur Lines](https://raw.githubusercontent.com/EdwardHill15/climate_viz/main/figures/temperature_lines.png)
+
+![Global Warming Stripes](https://raw.githubusercontent.com/EdwardHill15/climate_viz/main/figures/warming_stripes.png)
