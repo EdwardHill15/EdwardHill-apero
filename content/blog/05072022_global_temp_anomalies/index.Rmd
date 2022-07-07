@@ -20,3 +20,9 @@ knitr::opts_chunk$set(echo = TRUE)
 ![Global Temperatur Lines](https://raw.githubusercontent.com/EdwardHill15/climate_viz/main/figures/temperature_lines.png)
 
 ![Global Warming Stripes](https://raw.githubusercontent.com/EdwardHill15/climate_viz/main/figures/warming_stripes.png)
+
+
+![Variations in annual temperature anomaly by latitude (1880-2021)](https://raw.githubusercontent.com/EdwardHill15/climate_viz/main/figures/latitude_anomaly.png)
+
+
+
