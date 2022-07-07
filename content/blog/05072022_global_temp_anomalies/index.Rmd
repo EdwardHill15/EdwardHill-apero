@@ -9,6 +9,8 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+![Variations in annual temperature anomaly by latitude (1880-2021)](https://raw.githubusercontent.com/EdwardHill15/climate_viz/main/figures/latitude_anomaly.png)
+
 ![Global Annual Temperature Anomalies Between 1950 and 2021](https://raw.githubusercontent.com/EdwardHill15/climate_viz/main/figures/global_anomaly.png)
 
 ![Global Temperature Change (1880-2022)](https://raw.githubusercontent.com/EdwardHill15/climate_viz/main/figures/climate_spiral.png)
@@ -22,7 +24,7 @@ knitr::opts_chunk$set(echo = TRUE)
 ![Global Warming Stripes](https://raw.githubusercontent.com/EdwardHill15/climate_viz/main/figures/warming_stripes.png)
 
 
-![Variations in annual temperature anomaly by latitude (1880-2021)](https://raw.githubusercontent.com/EdwardHill15/climate_viz/main/figures/latitude_anomaly.png)
+
 
 
 
