@@ -36,6 +36,11 @@ Other references:  [@Chalmers1995a], [@RobertLawrenceKuhn2020]
 
 # **Data**
 
+![Behaviour Factors in relation to Consciousness Levels](https://raw.githubusercontent.com/EdwardHill15/Data/main/graphs/plot_behaviour_consciousness.png)
+
+
+
+
 ![bar graph consciousness and nvm factors in total group](https://raw.githubusercontent.com/EdwardHill15/Data/main/Prima%20Experientia/bar2_t.png)
 
 ![bargraph of consciousness and nvm factors in women](https://raw.githubusercontent.com/EdwardHill15/Data/main/Prima%20Experientia/bar1_f.png)
