@@ -1,0 +1,134 @@
+---
+title: "Rise of Temperature in The Netherands"
+author: "Edward Hill"
+date: '2022-07-19'
+output: html_document
+links:
+- icon: github
+  icon_pack: fab
+  name: github-data
+  url: https://github.com/EdwardHill15/climate_viz
+---
+
+
+
+<div id="scraping-weather-data-from-the-internet-with-r-and-the-tidyverse-cc231" class="section level1">
+<h1>Scraping weather data from the internet with R and the tidyverse (CC231)</h1>
+<ul>
+<li><a href="https://riffomonas.org/code_club/2022-07-18-local-weather" class="uri">https://riffomonas.org/code_club/2022-07-18-local-weather</a></li>
+<li>Finding a Weather Station</li>
+<li><a href="https://ncei.noaa.gov/cdo-web/" class="uri">https://ncei.noaa.gov/cdo-web/</a></li>
+</ul>
+</div>
+<div id="weather-station-amsterdam-holendrecht" class="section level1">
+<h1>Weather Station Amsterdam Holendrecht</h1>
+<ul>
+<li><a href="https://www.sysanalyser.com/meteoholendrecht.php" class="uri">https://www.sysanalyser.com/meteoholendrecht.php</a></li>
+</ul>
+<pre class="r"><code>inventory_url &lt;- &quot;https://www.ncei.noaa.gov/pub/data/ghcn/daily/ghcnd-inventory.txt&quot;
+
+inventory &lt;- read_table(inventory_url, 
+           col_names = c(&quot;station&quot;, &quot;lat&quot;, &quot;lon&quot;, &quot;variable&quot;, &quot;start&quot;, &quot;end&quot;))</code></pre>
+<pre><code>## 
+## -- Column specification --------------------------------------------------------
+## cols(
+##   station = col_character(),
+##   lat = col_double(),
+##   lon = col_double(),
+##   variable = col_character(),
+##   start = col_double(),
+##   end = col_double()
+## )</code></pre>
+<pre class="r"><code>my_lat &lt;- 52.13 * 2 * pi / 360
+my_lon &lt;- 5.29 * 2 * pi / 360
+
+
+inventory &lt;- inventory %&gt;% 
+  mutate(lat_r = lat*2*pi/360,
+         lon_r = lon*2*pi/360,
+         d = 3963 * acos((sin(lat_r) * sin(my_lat)) + 
+                           cos(lat_r) * cos(my_lat) *
+                           cos(my_lon - lon_r)))</code></pre>
+<!-- # mutate miles into km with * 1.609344 -->
+<pre class="r"><code>my_station &lt;- inventory %&gt;% 
+  mutate(lat_r = lat*2*pi/360,
+         lon_r = lon*2*pi/360,
+         d = 1.609344 * 3963 * acos((sin(lat_r) * sin(my_lat)) + 
+                           cos(lat_r) * cos(my_lat) *
+                           cos(my_lon - lon_r))) %&gt;% 
+  filter(start &lt; 1960) %&gt;% 
+  top_n(n = -1, d) %&gt;% 
+  distinct(station) %&gt;% 
+  pull(station)</code></pre>
+</div>
+<div id="get-and-tidy-local-weather-station-data-from-nle00100501" class="section level1">
+<h1>Get and tidy local weather station data (from: “NLE00100501”)</h1>
+<pre class="r"><code>station_daily &lt;- glue(&quot;https://www.ncei.noaa.gov/pub/data/ghcn/daily/by_station/{my_station}.csv.gz&quot;)
+
+df &lt;- read_csv(station_daily,
+         col_names = c(&quot;station&quot;, &quot;date&quot;, &quot;variable&quot;, &quot;value&quot;, &quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;)) %&gt;% 
+  select(date, variable, value) %&gt;% 
+  pivot_wider(names_from = &quot;variable&quot;, values_from = &quot;value&quot;,
+              values_fill = 0) %&gt;% 
+  select(date, TMAX, PRCP)</code></pre>
+<pre><code>## Rows: 53418 Columns: 8
+## -- Column specification --------------------------------------------------------
+## Delimiter: &quot;,&quot;
+## chr (3): station, variable, c
+## dbl (2): date, value
+## lgl (3): a, b, d
+## 
+## i Use `spec()` to retrieve the full column specification for this data.
+## i Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+<!-- # ELEMENT    is the element type.   There are five core elements as well as a number -->
+<!-- # of addition elements.   -->
+<!-- #  -->
+<!-- # The five core elements are: -->
+<!-- #    -->
+<!-- #   PRCP = Precipitation (tenths of mm) -->
+<!-- # SNOW = Snowfall (mm) -->
+<!-- # SNWD = Snow depth (mm) -->
+<!-- # TMAX = Maximum temperature (tenths of degrees C) -->
+<!-- # TMIN = Minimum temperature (tenths of degrees C) -->
+<pre class="r"><code>df &lt;- df %&gt;% 
+  mutate(date = ymd(date))
+  
+local_weather &lt;- df  
+local_weather %&gt;% 
+  mutate(year = year(date)) %&gt;% 
+  group_by(year) %&gt;% 
+  summarize(Degrees_C= mean(TMAX / 10)) %&gt;% 
+  ggplot(aes(x=year, y=Degrees_C, color = Degrees_C)) +
+  geom_point(size = 9, alpha = .7) +
+  geom_smooth(method = &quot;lm&quot;, formula = y ~x, se = FALSE, color = &quot;gray&quot;) +
+  scale_color_viridis_c(option = (&quot;magma&quot;)) +
+  scale_y_continuous(breaks = seq(10, 16, 2)) +
+labs(y = &quot;Temperature in (\u00B0 C)&quot;, 
+     x = NULL,
+     title = &quot;Rise of temperature in The Netherlands between 1951 - 2008&quot;,
+     subtitle = &quot;Temperature is colored by the size of the mean temperature value&quot;,
+     caption = &quot;Source: https://www.ncei.noaa.gov/pub/data/ghcn/daily/ghcnd-inventory.txt&quot;) +
+  theme(
+    plot.background = element_rect(fill = &quot;black&quot;, color = &quot;black&quot;),
+    panel.background = element_rect(fill = &quot;black&quot;),
+    plot.title = element_text(color = &quot;white&quot;, face = &quot;bold&quot;, size = 25),
+    plot.subtitle = element_text(color = &quot;gray&quot;, size =15),
+    plot.title.position = &quot;plot&quot;,
+    plot.caption = element_text(color = &quot;white&quot;, size = 12),
+    axis.text = element_text(color = &quot;white&quot;, size = 15),
+    axis.title = element_text(color = &quot;white&quot;, size = 15),
+    panel.grid.major.x = element_blank(),
+    panel.grid.minor.x = element_blank(),
+    panel.grid.major.y = element_line(color = &quot;gray&quot;, size = 0.25),
+    panel.grid.minor.y = element_blank(),
+    axis.ticks = element_blank(),
+    legend.background = element_rect(fill = &quot;black&quot;),
+    legend.text = element_text(color = &quot;white&quot;),
+    legend.title = element_text(color = &quot;white&quot;),
+    legend.position = &quot;bottom&quot;)</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<div class="figure">
+<img src="https://raw.githubusercontent.com/EdwardHill15/Data/main/graphs/rise_temp_netherlands.png" alt="" />
+<p class="caption">Rise of temperature in The Netherlands between 1951 and 2008</p>
+</div>
+</div>
