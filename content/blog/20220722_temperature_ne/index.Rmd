@@ -33,28 +33,26 @@ library(lubridate)
 
 # Introduction
 
-# No climate-crisis in The Netherlands based on temperature and precipitation differences.
-
 There's a slight temperature rise measured in the Netherlands between 1901 and 2022. Though the maximum temperatures near 37 degrees of Celsius were also measured respectively 15, 30, 50 and 60 years ago. 
-
-My conclusion based on these data is that there is light positive trend of temperature rise from 1901 to 2022 but this doesn't suppport the idea of a climate-crisis based on measured temperature differences. 
 
 Source:1.  Source: KNMI weather station De Bilt in The Netherlands (NLM00006260)
 2. https://github.com/EdwardHill15/climate_viz
 
-# Scraping weather data from the internet with R and the tidyverse (CC231)
+# Data
+
+## Scraping weather data from the internet with R and the tidyverse (CC231)
 
 * https://riffomonas.org/code_club/2022-07-18-local-weather
-* Finding a Weather Station
+
+## Finding a Weather Station
+
 * https://ncei.noaa.gov/cdo-web/
-# Methods
 
-## Data
+## Weather Station KNMI De Bilt The Netherlands
 
-# Weather Station KNMI De Bilt The Netherlands
 * https://www.knmi.nl/home
 
-```{r}
+```{r include=FALSE}
 inventory_url <- "https://www.ncei.noaa.gov/pub/data/ghcn/daily/ghcnd-inventory.txt"
 
 inventory <- read_table(inventory_url, 
@@ -74,10 +72,8 @@ inventory <- inventory %>%
 
 ```
 
-
-
 <!-- # mutate miles into km with * 1.609344 -->
-```{r}
+```{r include=FALSE}
 my_station <- inventory %>% 
   mutate(lat_r = lat*2*pi/360,
          lon_r = lon*2*pi/360,
@@ -90,9 +86,9 @@ my_station <- inventory %>%
   pull(station)
 ```
 
-# Get and tidy local weather station data (from: "NLE00100501")
+## Get and tidy local weather station data (from: "NLE00100501")
 
-```{r}
+```{r include=FALSE}
 station_daily <- glue("https://www.ncei.noaa.gov/pub/data/ghcn/daily/by_station/{my_station}.csv.gz")
 
 df <- read_csv(station_daily,
@@ -104,9 +100,9 @@ df <- read_csv(station_daily,
 
 ```
 
-# Statistical Analysis
+# Statistical Analysis and plots
 
-## Maximum Temperature in The Netherlands between 1901 and 2022
+## Figure 1: Maximum Temperature in The Netherlands between 1901 and 2022
 
 ```{r echo=FALSE}
 df <- df %>% 
@@ -126,17 +122,17 @@ NE_max %>%
 #coord_cartesian(expand=TRUE) +
   scale_y_continuous(breaks = seq(27.5, 37.5, 2.5),
                    limits = c(26, 37.5)) +
-  scale_x_continuous(breaks = seq(1901, 2022, 11),
+  scale_x_continuous(breaks = seq(1901, 2022, 22),
                      limits = c(1901, 2023)) +
   labs(y = "Temperature in (\u00B0 C)", 
      x = NULL,
-     title = "Maximum Temperature in The Netherlands between 1901 and 2022",
+     title = "Maximum Temperature The Netherlands",
      subtitle = "Temperature is colored by the size of the maximum temperature value",
      caption = "Source: KNMI weather station De Bilt in The Netherlands (NLM00006260)") +
   theme(
     plot.background = element_rect(fill = "black", color = "black"),
     panel.background = element_rect(fill = "black"),
-    plot.title = element_text(color = "white", face = "bold", size = 25, hjust = 0.5),
+    plot.title = element_text(color = "white", face = "bold", size = 25),
     plot.subtitle = element_text(color = "gray", size =15),
     plot.title.position = "plot",
     plot.caption = element_text(color = "white", size = 12),
@@ -154,7 +150,7 @@ NE_max %>%
 
 ```
 
-## Mean Temperature in The Netherlands between 1901 and 2022
+## Figure 2: Mean Temperature in The Netherlands between 1901 and 2022
 
 ```{r echo=FALSE}
 NE_mean <- aggregate(TMAX~year(date), df, mean)
@@ -173,17 +169,17 @@ NE_mean %>%
   #coord_cartesian(expand=TRUE) +
   scale_y_continuous(breaks = seq(11.5, 16, 1.5),
                      limits = c(11.5, 16)) +
-  scale_x_continuous(breaks = seq(1901, 2022, 11),
+  scale_x_continuous(breaks = seq(1901, 2022, 22),
                      limits = c(1901, 2023)) +
   labs(y = "Temperature in (\u00B0 C)", 
        x = NULL,
-       title = "Mean Temperature in The Netherlands between 1901 and 2022",
+       title = "Mean Temperature in The Netherlands",
      subtitle = "Temperature is colored by the size of the maximum temperature value",
      caption = "Source: KNMI weather station De Bilt in The Netherlands (NLM00006260)") +
   theme(
     plot.background = element_rect(fill = "black", color = "black"),
     panel.background = element_rect(fill = "black"),
-    plot.title = element_text(color = "white", face = "bold", size = 25, hjust = 0.5),
+    plot.title = element_text(color = "white", face = "bold", size = 25),
     plot.subtitle = element_text(color = "gray", size =15),
     plot.title.position = "plot",
     plot.caption = element_text(color = "white", size = 12),
@@ -201,14 +197,14 @@ NE_mean %>%
 ```
 
 
-## Precipitation in The Netherlands between 1901 and 2022
+## Figure 3: Precipitation in The Netherlands between 1901 and 2022
 
 ```{r echo=FALSE}
 NE_prcp <- aggregate(PRCP~year(date), df, max)
 NE_prcp$PRCP <- NE_prcp$PRCP / 10
 colnames(NE_prcp) <- c("year", "prcp")
 NE_prcp$prcp <- round(NE_prcp$prcp, 1)
-
+NE_prcp <- NE_prcp[-c(1:5),]
 NE_prcp %>% 
   ggplot(aes(x=year, y=prcp, color = prcp)) +
   geom_point(size = 9, alpha = .7) +
@@ -220,17 +216,17 @@ NE_prcp %>%
   #coord_cartesian(expand=TRUE) +
   scale_y_continuous(breaks = seq(15, 65, 10),
                      limits = c(15, 65)) +
-  scale_x_continuous(breaks = seq(1901, 2022, 11),
+  scale_x_continuous(breaks = seq(1901, 2022, 22),
                      limits = c(1901, 2023)) +
   labs(y = "Precipitation in mm.", 
        x = NULL,
-       title = "Precipitation in The Netherlands between 1901 and 2022",
+       title = "Precipitation in The Netherlands",
      subtitle = "Temperature is colored by the size of the maximum temperature value",
      caption = "Source: KNMI weather station De Bilt in The Netherlands (NLM00006260)") +
   theme(
     plot.background = element_rect(fill = "black", color = "black"),
     panel.background = element_rect(fill = "black"),
-    plot.title = element_text(color = "white", face = "bold", size = 25, hjust = 0.5),
+    plot.title = element_text(color = "white", face = "bold", size = 25),
     plot.subtitle = element_text(color = "gray", size =15),
     plot.title.position = "plot",
     plot.caption = element_text(color = "white", size = 12),
@@ -246,3 +242,7 @@ NE_prcp %>%
     legend.title = element_text(color = "white"),
     legend.position = "bottom")
 ```
+
+# Conclusion
+
+My conclusion based on these data is that there is light positive trend of temperature rise from 1901 to 2022 but this doesn't suppport the idea of a climate-crisis based on measured temperature differences. 

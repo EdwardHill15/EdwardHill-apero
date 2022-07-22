@@ -27,102 +27,51 @@ url_video: ""
 
 <div id="introduction" class="section level1">
 <h1>Introduction</h1>
-</div>
-<div id="no-climate-crisis-in-the-netherlands-based-on-temperature-and-precipitation-differences." class="section level1">
-<h1>No climate-crisis in The Netherlands based on temperature and precipitation differences.</h1>
 <p>There’s a slight temperature rise measured in the Netherlands between 1901 and 2022. Though the maximum temperatures near 37 degrees of Celsius were also measured respectively 15, 30, 50 and 60 years ago.</p>
-<p>My conclusion based on these data is that there is light positive trend of temperature rise from 1901 to 2022 but this doesn’t suppport the idea of a climate-crisis based on measured temperature differences.</p>
 <p>Source:1. Source: KNMI weather station De Bilt in The Netherlands (NLM00006260)
 2. <a href="https://github.com/EdwardHill15/climate_viz" class="uri">https://github.com/EdwardHill15/climate_viz</a></p>
 </div>
-<div id="scraping-weather-data-from-the-internet-with-r-and-the-tidyverse-cc231" class="section level1">
-<h1>Scraping weather data from the internet with R and the tidyverse (CC231)</h1>
+<div id="data" class="section level1">
+<h1>Data</h1>
+<div id="scraping-weather-data-from-the-internet-with-r-and-the-tidyverse-cc231" class="section level2">
+<h2>Scraping weather data from the internet with R and the tidyverse (CC231)</h2>
 <ul>
 <li><a href="https://riffomonas.org/code_club/2022-07-18-local-weather" class="uri">https://riffomonas.org/code_club/2022-07-18-local-weather</a></li>
-<li>Finding a Weather Station</li>
-<li><a href="https://ncei.noaa.gov/cdo-web/" class="uri">https://ncei.noaa.gov/cdo-web/</a>
-# Methods</li>
 </ul>
-<div id="data" class="section level2">
-<h2>Data</h2>
 </div>
+<div id="finding-a-weather-station" class="section level2">
+<h2>Finding a Weather Station</h2>
+<ul>
+<li><a href="https://ncei.noaa.gov/cdo-web/" class="uri">https://ncei.noaa.gov/cdo-web/</a></li>
+</ul>
 </div>
-<div id="weather-station-knmi-de-bilt-the-netherlands" class="section level1">
-<h1>Weather Station KNMI De Bilt The Netherlands</h1>
+<div id="weather-station-knmi-de-bilt-the-netherlands" class="section level2">
+<h2>Weather Station KNMI De Bilt The Netherlands</h2>
 <ul>
 <li><a href="https://www.knmi.nl/home" class="uri">https://www.knmi.nl/home</a></li>
 </ul>
-<pre class="r"><code>inventory_url &lt;- &quot;https://www.ncei.noaa.gov/pub/data/ghcn/daily/ghcnd-inventory.txt&quot;
-
-inventory &lt;- read_table(inventory_url, 
-           col_names = c(&quot;station&quot;, &quot;lat&quot;, &quot;lon&quot;, &quot;variable&quot;, &quot;start&quot;, &quot;end&quot;))</code></pre>
-<pre><code>## 
-## -- Column specification --------------------------------------------------------
-## cols(
-##   station = col_character(),
-##   lat = col_double(),
-##   lon = col_double(),
-##   variable = col_character(),
-##   start = col_double(),
-##   end = col_double()
-## )</code></pre>
-<pre class="r"><code>my_lat &lt;- 52.13 * 2 * pi / 360
-my_lon &lt;- 5.29 * 2 * pi / 360
-
-
-inventory &lt;- inventory %&gt;% 
-  mutate(lat_r = lat*2*pi/360,
-         lon_r = lon*2*pi/360,
-         d = 3963 * acos((sin(lat_r) * sin(my_lat)) + 
-                           cos(lat_r) * cos(my_lat) *
-                           cos(my_lon - lon_r)))</code></pre>
 <!-- # mutate miles into km with * 1.609344 -->
-<pre class="r"><code>my_station &lt;- inventory %&gt;% 
-  mutate(lat_r = lat*2*pi/360,
-         lon_r = lon*2*pi/360,
-         d = 1.609344 * 3963 * acos((sin(lat_r) * sin(my_lat)) + 
-                           cos(lat_r) * cos(my_lat) *
-                           cos(my_lon - lon_r))) %&gt;% 
-  filter(start &lt; 1960 &amp; end &gt; 2020) %&gt;% 
-  top_n(n = -1, d) %&gt;% 
-  distinct(station) %&gt;% 
-  pull(station)</code></pre>
 </div>
-<div id="get-and-tidy-local-weather-station-data-from-nle00100501" class="section level1">
-<h1>Get and tidy local weather station data (from: “NLE00100501”)</h1>
-<pre class="r"><code>station_daily &lt;- glue(&quot;https://www.ncei.noaa.gov/pub/data/ghcn/daily/by_station/{my_station}.csv.gz&quot;)
-
-df &lt;- read_csv(station_daily,
-         col_names = c(&quot;station&quot;, &quot;date&quot;, &quot;variable&quot;, &quot;value&quot;, &quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;)) %&gt;% 
-  select(date, variable, value) %&gt;% 
-  pivot_wider(names_from = &quot;variable&quot;, values_from = &quot;value&quot;,
-              values_fill = 0) %&gt;% 
-  select(date, TMAX, TMIN, PRCP)</code></pre>
-<pre><code>## Warning: One or more parsing issues, see `problems()` for details</code></pre>
-<pre><code>## Rows: 177250 Columns: 8
-## -- Column specification --------------------------------------------------------
-## Delimiter: &quot;,&quot;
-## chr (4): station, variable, a, c
-## dbl (2): date, value
-## lgl (2): b, d
-## 
-## i Use `spec()` to retrieve the full column specification for this data.
-## i Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+<div id="get-and-tidy-local-weather-station-data-from-nle00100501" class="section level2">
+<h2>Get and tidy local weather station data (from: “NLE00100501”)</h2>
 </div>
-<div id="statistical-analysis" class="section level1">
-<h1>Statistical Analysis</h1>
-<div id="maximum-temperature-in-the-netherlands-between-1901-and-2022" class="section level2">
-<h2>Maximum Temperature in The Netherlands between 1901 and 2022</h2>
+</div>
+<div id="statistical-analysis-and-plots" class="section level1">
+<h1>Statistical Analysis and plots</h1>
+<div id="figure-1-maximum-temperature-in-the-netherlands-between-1901-and-2022" class="section level2">
+<h2>Figure 1: Maximum Temperature in The Netherlands between 1901 and 2022</h2>
 <p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
 </div>
-<div id="mean-temperature-in-the-netherlands-between-1901-and-2022" class="section level2">
-<h2>Mean Temperature in The Netherlands between 1901 and 2022</h2>
+<div id="figure-2-mean-temperature-in-the-netherlands-between-1901-and-2022" class="section level2">
+<h2>Figure 2: Mean Temperature in The Netherlands between 1901 and 2022</h2>
 <p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
 </div>
-<div id="precipitation-in-the-netherlands-between-1901-and-2022" class="section level2">
-<h2>Precipitation in The Netherlands between 1901 and 2022</h2>
-<pre><code>## Warning: Removed 5 rows containing non-finite values (stat_smooth).</code></pre>
-<pre><code>## Warning: Removed 5 rows containing missing values (geom_point).</code></pre>
+<div id="figure-3-precipitation-in-the-netherlands-between-1901-and-2022" class="section level2">
+<h2>Figure 3: Precipitation in The Netherlands between 1901 and 2022</h2>
 <p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
 </div>
+</div>
+<div id="conclusion" class="section level1">
+<h1>Conclusion</h1>
+<p>My conclusion based on these data is that there is light positive trend of temperature rise from 1901 to 2022 but this doesn’t suppport the idea of a climate-crisis based on measured temperature differences.</p>
 </div>
