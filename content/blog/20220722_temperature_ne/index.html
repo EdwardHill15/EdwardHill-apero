@@ -130,7 +130,71 @@ local_weather %&gt;%
 <p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
 </div>
 </div>
-<div id="conclusion" class="section level1">
-<h1>Conclusion</h1>
+<div id="snowfall-in-the-netherlands-from-1955-to-2022" class="section level1">
+<h1>Snowfall in the Netherlands from 1955 to 2022</h1>
+<pre class="r"><code>neerslaggeg_De_Bilt &lt;- read_delim(&quot;neerslaggeg_De-Bilt.csv&quot;, 
+                                  delim = &quot;;&quot;, escape_double = FALSE, trim_ws = TRUE)</code></pre>
+<pre><code>## Rows: 45825 Columns: 4
+## -- Column specification --------------------------------------------------------
+## Delimiter: &quot;;&quot;
+## dbl (4): STN, YYYYMMDD, RD, SX
+## 
+## i Use `spec()` to retrieve the full column specification for this data.
+## i Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+<pre class="r"><code>df &lt;- neerslaggeg_De_Bilt
+
+df &lt;- df[-1]
+colnames(df) &lt;- c(&quot;date&quot;, &quot;prcp&quot;, &quot;snow&quot;)
+df_snow &lt;- df[-2]
+df_snow$snow[df_snow$snow %in% c(996:999)] &lt;- 1
+df_snow &lt;- df[-2]
+df_snow$date &lt;- as.character(df_snow$date)
+df_snow$date &lt;- ymd(df_snow$date)
+df_snow[is.na(df_snow)] &lt;- 0  # Vervang NA in data met 0
+
+this_year &lt;- year(today())
+this_month &lt;- month(today(), label = TRUE, abbr = FALSE)
+this_day &lt;- ordinal(day(today()))</code></pre>
+</div>
+<div id="graph-of-snowfall-in-the-netherlands-between-1955-to-2022" class="section level1">
+<h1>Graph of Snowfall in the Netherlands between 1955 to 2022</h1>
+<pre class="r"><code>df_snow %&gt;% 
+  mutate(year = year(date),
+         month = month(date),
+         day = day(date)) %&gt;% 
+  filter(!(month == 2 &amp; day == 29)) %&gt;% 
+  group_by(year) %&gt;% 
+  mutate(cum_snow = cumsum(snow)) %&gt;%
+  ungroup() %&gt;% 
+  ggplot(aes(x=year, y=cum_snow, group = year, col = cum_snow)) +
+  geom_line(size = 4) +
+  scale_x_continuous(breaks = seq(1955, 2022, 5),
+                     labels = seq(1955, 2022, 5),
+                     limits = c(1948, 2022)) +
+  scale_color_gradient2(low = &quot;darkred&quot;, mid = &quot;White&quot;, high = &quot;red&quot;,
+                       midpoint = 50) +
+  scale_y_continuous(breaks = seq(0, 300, 50),
+                     labels = seq(0, 300, 50),
+                     limits = c(0,300),
+                     expand = c(0,0)) +
+  labs(x = NULL,
+       y = &quot;Cumulative snow (cm)&quot;,
+       title = glue(&quot;Through June 20th, the &lt;span style = &#39;color: red&#39;&gt;cumulative&lt;/span&gt; &lt;span style = &#39;color: lightblue&#39;&gt;snow&lt;/span&gt; in The Netherlands near De Bilt to {this_year}&quot;)) +
+  theme(
+    plot.title.position = &quot;plot&quot;,
+    plot.title = element_textbox_simple(margin=margin(b=10), size = 16, color = &quot;white&quot;),
+    axis.title.y = element_text(color = &quot;white&quot;),
+    panel.background = element_rect(fill = &quot;black&quot;),
+    axis.line = element_line(),
+    panel.grid = element_blank(),
+    plot.background = element_rect(fill = &quot;black&quot;, color = &quot;black&quot;),
+    axis.text = element_text(color = &quot;white&quot;, size = 8),
+    legend.background = element_rect(fill = &quot;black&quot;),
+    legend.text = element_text(color = &quot;white&quot;, size = 6),
+    legend.title = element_text(color = &quot;white&quot;),
+    legend.position = &quot;bottom&quot;)</code></pre>
+<pre><code>## Warning: Removed 38390 row(s) containing missing values (geom_path).</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-9-1.png" width="672" />
+# Conclusion</p>
 <p>My conclusion based on these data is that there is light positive trend of temperature rise from 1901 to 2022 with a precipitation value slightly above the average precipitation but this doesn’t support the idea of a climate-crisis based on measured temperature differences.</p>
 </div>
