@@ -411,6 +411,7 @@ local_weather %>%
   facet_wrap(~name, ncol = 1, scales = "free_y", 
              strip.position = "left",
              labeller = labeller(name = pretty_labels)) +
+  scale_color_manual(values = c("red", "green", "dodgerblue")) +
   scale_y_continuous(limits = c(0,NA), expand = c(0,0)) +
   scale_x_date(date_breaks = "2 months", 
                date_labels = "%B") +
