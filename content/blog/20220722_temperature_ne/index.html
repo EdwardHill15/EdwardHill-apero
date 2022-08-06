@@ -4,10 +4,10 @@ categories:
 - temperature
 date: "2022-07-22"
 draft: false
-excerpt: Temperature rises in the Netherlands between 1901 and 2022
+excerpt: Climate change in the Netherlands between 1901 and 2022
 layout: single
-subtitle: Temperature rises in the Netherlands between 1901 and 2022
-title: Temperature Rise in The Netherlands
+subtitle: Temperature, Precipitation and Snowfall in the Netherlands between 1901 and 2022
+title: Climate change in The Netherlands between 1901 and 2022
 external_link: ""
 image:
   caption: Temprature
@@ -247,7 +247,7 @@ local_weather %&gt;%
   coord_cartesian(clip = &quot;off&quot;) +
   labs(x=NULL,
         y=NULL,
-       title = &quot;Probability and Average Precipitation in The Netherlands&quot;,
+       title = &quot;Probability and Average Precipitation in The Netherlands from 1901-2022&quot;,
        #title = glue(&quot;Through {today_month} {today_day}, the precipitation in The Netherlands near De Bilt has a &lt;span style = &#39;color: red&#39;&gt;probability&lt;/span&gt; and &lt;span style = &#39;color: red&#39;&gt;average&lt;/span&gt; for {today_date}&quot;)) +
        subtitle = &quot;The red vertical line is today (August 6th, 2022)&quot;) +
   theme(
@@ -264,10 +264,10 @@ local_weather %&gt;%
     axis.title.y = element_text(color = &quot;white&quot;),
     axis.text = element_text(color = &quot;white&quot;, size = 12),
     legend.background = element_rect(fill = &quot;black&quot;),
-    legend.text = element_text(color = &quot;white&quot;, size = 10),
-    legend.title = element_text(color = &quot;white&quot;),
-    legend.position = &quot;bottom&quot;,
-    legend.key = element_rect(fill = &quot;black&quot;)
+    #legend.text = element_text(color = &quot;white&quot;, size = 10),
+    #legend.title = element_text(color = &quot;white&quot;),
+    legend.position = &quot;none&quot;,
+    #legend.key = element_rect(fill = &quot;black&quot;)
     )</code></pre>
 <pre><code>## `geom_smooth()` using method = &#39;loess&#39; and formula &#39;y ~ x&#39;</code></pre>
 <p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>

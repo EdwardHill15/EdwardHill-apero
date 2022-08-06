@@ -4,10 +4,10 @@ categories:
 - temperature
 date: "2022-07-22"
 draft: false
-excerpt: Temperature rises in the Netherlands between 1901 and 2022
+excerpt: Climate change in the Netherlands between 1901 and 2022
 layout: single
-subtitle: Temperature rises in the Netherlands between 1901 and 2022
-title: Temperature Rise in The Netherlands
+subtitle: Temperature, Precipitation and Snowfall in the Netherlands between 1901 and 2022
+title: Climate change in The Netherlands between 1901 and 2022
 external_link: ""
 image:
   caption: Temprature
@@ -417,7 +417,7 @@ local_weather %>%
   coord_cartesian(clip = "off") +
   labs(x=NULL,
         y=NULL,
-       title = "Probability and Average Precipitation in The Netherlands",
+       title = "Probability and Average Precipitation in The Netherlands from 1901-2022",
        #title = glue("Through {today_month} {today_day}, the precipitation in The Netherlands near De Bilt has a <span style = 'color: red'>probability</span> and <span style = 'color: red'>average</span> for {today_date}")) +
        subtitle = "The red vertical line is today (August 6th, 2022)") +
   theme(
@@ -434,20 +434,14 @@ local_weather %>%
     axis.title.y = element_text(color = "white"),
     axis.text = element_text(color = "white", size = 12),
     legend.background = element_rect(fill = "black"),
-    legend.text = element_text(color = "white", size = 10),
-    legend.title = element_text(color = "white"),
-    legend.position = "bottom",
-    legend.key = element_rect(fill = "black")
+    #legend.text = element_text(color = "white", size = 10),
+    #legend.title = element_text(color = "white"),
+    legend.position = "none",
+    #legend.key = element_rect(fill = "black")
     )
 ```
 
 ![Precipitation in The Netherlands from 1901 - 2022](https://raw.githubusercontent.com/EdwardHill15/climate_viz/main/figures/prob_prcp_amount_ne.png)
-
-
-
-
-
-
 
 # Conclusion
 
