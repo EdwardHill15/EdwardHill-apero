@@ -200,6 +200,82 @@ this_day &lt;- ordinal(day(today()))</code></pre>
 <p class="caption">Graph of Snowfall in the Netherlands between 1955 to 2022</p>
 </div>
 </div>
+<div id="section" class="section level1">
+<h1></h1>
+<pre class="r"><code>library(glue)
+library(ggtext)
+library(scales)
+library(tidyverse)
+
+pretty_labels &lt;- c(&quot;prob_prcp&quot; = &quot;Probality of precipitation&quot;, 
+                  &quot;mean_prcp&quot; = &quot;Average amount of\nprecipitation by day (mm)&quot;,
+                  &quot;mean_event&quot; = &quot;Average amount of\nprecipitation by event (mm)&quot;)
+
+Sys.setlocale(&quot;LC_TIME&quot;, &quot;English&quot;)</code></pre>
+<pre><code>## [1] &quot;English_United States.1252&quot;</code></pre>
+<pre class="r"><code>today_month &lt;- month(today())
+today_day &lt;- day(today())
+today_date &lt;- ymd(glue(&quot;2020-{today_month}-{today_day}&quot;))
+
+
+local_weather %&gt;% 
+  select(date, prcp) %&gt;% 
+  mutate(day = day(date),
+         month = month(date),
+         year = year(date)) %&gt;% 
+  drop_na(prcp) %&gt;% 
+  group_by(month, day) %&gt;% 
+  summarize(prob_prcp = mean(prcp &gt; 0),
+            mean_prcp = mean(prcp),
+            mean_event = mean(prcp[prcp &gt; 0]),
+            .groups = &quot;drop&quot;) %&gt;% 
+  mutate(date = ymd(glue(&quot;2020-{month}-{day}&quot;))) %&gt;% 
+  select(-month, -day) %&gt;% 
+  pivot_longer(cols = c(prob_prcp, mean_prcp, mean_event)) %&gt;% 
+  mutate(name = factor(name, levels = c(&quot;prob_prcp&quot;, &quot;mean_prcp&quot;, &quot;mean_event&quot;))) %&gt;% 
+  ggplot(aes(x=date, y=value, color = name)) +
+  geom_vline(xintercept = today_date, color = &quot;red&quot;, size = 1) +
+  geom_line() +
+  geom_hline(yintercept = 0, color = &quot;white&quot;) +
+  geom_smooth(se = FALSE) +
+  facet_wrap(~name, ncol = 1, scales = &quot;free_y&quot;, 
+             strip.position = &quot;left&quot;,
+             labeller = labeller(name = pretty_labels)) +
+  scale_y_continuous(limits = c(0,NA), expand = c(0,0)) +
+  scale_x_date(date_breaks = &quot;2 months&quot;, 
+               date_labels = &quot;%B&quot;) +
+  coord_cartesian(clip = &quot;off&quot;) +
+  labs(x=NULL,
+        y=NULL,
+       title = &quot;Probability and Average Precipitation in The Netherlands&quot;,
+       #title = glue(&quot;Through {today_month} {today_day}, the precipitation in The Netherlands near De Bilt has a &lt;span style = &#39;color: red&#39;&gt;probability&lt;/span&gt; and &lt;span style = &#39;color: red&#39;&gt;average&lt;/span&gt; for {today_date}&quot;)) +
+       subtitle = &quot;The red vertical line is today (August 6th, 2022)&quot;) +
+  theme(
+    panel.background = element_rect(fill = &quot;black&quot;),
+    strip.placement = &quot;outside&quot;,
+    strip.background = element_blank(),
+    strip.text = element_text(color = &quot;white&quot;, size = 12), 
+    panel.grid = element_blank(),
+    plot.background = element_rect(fill = &quot;black&quot;, color = &quot;black&quot;),
+    axis.line = element_line(),
+    plot.title.position = &quot;plot&quot;,
+    plot.title = element_textbox_simple(margin=margin(b=10), size = 25, color = &quot;white&quot;),
+    plot.subtitle = element_textbox_simple(margin=margin(b=10), size = 15, color = &quot;white&quot;),
+    axis.title.y = element_text(color = &quot;white&quot;),
+    axis.text = element_text(color = &quot;white&quot;, size = 12),
+    legend.background = element_rect(fill = &quot;black&quot;),
+    legend.text = element_text(color = &quot;white&quot;, size = 10),
+    legend.title = element_text(color = &quot;white&quot;),
+    legend.position = &quot;bottom&quot;,
+    legend.key = element_rect(fill = &quot;black&quot;)
+    )</code></pre>
+<pre><code>## `geom_smooth()` using method = &#39;loess&#39; and formula &#39;y ~ x&#39;</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+<div class="figure">
+<img src="https://raw.githubusercontent.com/EdwardHill15/climate_viz/main/figures/prob_prcp_amount_ne.png" alt="" />
+<p class="caption">Precipitation in The Netherlands from 1901 - 2022</p>
+</div>
+</div>
 <div id="conclusion" class="section level1">
 <h1>Conclusion</h1>
 <p>My conclusion based on these data is that there is light positive trend of temperature rise from 1901 to 2022 with a precipitation value slightly above the average precipitation but this doesn’t support the idea of a climate-crisis based on measured temperature differences.</p>
