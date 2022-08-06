@@ -417,7 +417,7 @@ local_weather %>%
   coord_cartesian(clip = "off") +
   labs(x=NULL,
         y=NULL,
-       title = "Probability and Average Precipitation in The Netherlands from 1901-2022",
+       title = "<span style = 'color: red'>Probability</span> and <span style = 'color: green'>Aver</span><span style = 'color: dodgerblue'>age</span> Precipitation in The Netherlands from 1901 - 2022",
        #title = glue("Through {today_month} {today_day}, the precipitation in The Netherlands near De Bilt has a <span style = 'color: red'>probability</span> and <span style = 'color: red'>average</span> for {today_date}")) +
        subtitle = "The red vertical line is today (August 6th, 2022)") +
   theme(
