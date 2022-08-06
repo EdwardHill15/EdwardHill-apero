@@ -215,8 +215,8 @@ Sys.setlocale(&quot;LC_TIME&quot;, &quot;English&quot;)</code></pre>
 <pre><code>## [1] &quot;English_United States.1252&quot;</code></pre>
 <pre class="r"><code>today_month &lt;- month(today())
 today_day &lt;- day(today())
-today_date &lt;- ymd(glue(&quot;2020-{today_month}-{today_day}&quot;))
-
+today_date1 &lt;- ymd(glue(&quot;2020-{today_month}-{today_day}&quot;))
+today_date &lt;- ymd(glue(&quot;2022-{today_month}-{today_day}&quot;))
 
 local_weather %&gt;% 
   select(date, prcp) %&gt;% 
@@ -248,9 +248,10 @@ local_weather %&gt;%
   coord_cartesian(clip = &quot;off&quot;) +
   labs(x=NULL,
         y=NULL,
-       title = &quot;&lt;span style = &#39;color: red&#39;&gt;Probability&lt;/span&gt; and &lt;span style = &#39;color: green&#39;&gt;Aver&lt;/span&gt;&lt;span style = &#39;color: dodgerblue&#39;&gt;age&lt;/span&gt; Precipitation in The Netherlands from 1901 - 2022&quot;,
+       title = glue(&quot;&lt;span style = &#39;color: pink&#39;&gt;Probability&lt;/span&gt;, &lt;span style = &#39;color: green&#39;&gt;day average precipitation&lt;/span&gt; and &lt;span style = &#39;color: dodgerblue&#39;&gt;event average precipitation&lt;/span&gt;\nin The Netherlands from 1901 - {this_year}&quot;),
        #title = glue(&quot;Through {today_month} {today_day}, the precipitation in The Netherlands near De Bilt has a &lt;span style = &#39;color: red&#39;&gt;probability&lt;/span&gt; and &lt;span style = &#39;color: red&#39;&gt;average&lt;/span&gt; for {today_date}&quot;)) +
-       subtitle = &quot;The red vertical line is today (August 6th, 2022)&quot;) +
+       subtitle = glue(&quot;The &lt;span style = &#39;color: red&#39;&gt;red vertical line&lt;/span&gt; is today {today_date}&quot;),
+       caption = &quot;Source data: https://github.com/EdwardHill15/climate_viz&quot;) +
   theme(
     panel.background = element_rect(fill = &quot;black&quot;),
     strip.placement = &quot;outside&quot;,
