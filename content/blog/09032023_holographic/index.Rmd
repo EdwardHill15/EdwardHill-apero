@@ -17,6 +17,10 @@ links:
   icon_pack: fab
   name: github-data
   url: https://github.com/EdwardHill15/Holographic_Mind
+- icon: ""
+  icon_pack: fab
+  name: slides
+  url: https://xaringan-talks.netlify.app/robbins/#1
 url_code: ""
 url_pdf: ""
 url_slides: ""
