@@ -1,0 +1,59 @@
+---
+title: Holographic Mind
+output:
+  html_document:
+    df_print: paged
+email_address: totalegezondheidbv@gmail.com
+github_repo: https://github.com/EdwardHill15/rmarkdown_website_template
+bibliography: ref.bib
+biblio-style: apalike
+link-citations: yes
+---
+<center>
+<h1>Mind in a holographic field
+<br>
+<br>
+A temporal metaphysical view on the origin and nature of consciousness
+<br>
+<br>
+by
+<br>
+<br>
+Edward F. Hillenaar${^\dagger}$
+<br>
+<br></h1></center>
+
+${\dagger}$ To whom correspondence should be addressed:  
+[totalegezondheidbv@gmail.com](mailto: `r rmarkdown::metadata$email_address`) 
+<br>
+<br>
+Link to [Github Repository](`r rmarkdown::metadata$github_repo`)  
+Last updated on `r Sys.Date()`
+<br>
+<br>
+
+# **Introduction**
+
+This particular ontology of mind and consciousness posits a reduction base as its explanatory framework for the creation and experience of external world images. The **reduction base**, termed "Panvibration," elucidates the psycho-physical laws, including Gibson's invariance laws and optical flow fields, that are involved in generating and perceiving holographic images of external events in the human mind.
+<br>
+<br>
+The term **Panvibration** refers to the reduction base in this ontology of mind and consciousness. The late psychologist James Gibson's seminal work on the psycho-physical mechanisms of visual perception [@Gibson1950] informs the fundamental psycho-physical laws underlying this ontology. Additionally, the Philosophy of Mind by Henri Bergson [@Bergson1911], [@Bergson1910a], [@Bergson1922] plays a crucial role in this ontological theory, with the ultimate aim of resolving the **Hard Problem of Consciousness** [@Chalmers1995].
+<br>
+Other references:  [@Chalmers1995a], [@RobertLawrenceKuhn2020]
+<br>
+<br>
+
+# **Graphs**
+
+![Correlation Matrix of behaviour factors](https://raw.githubusercontent.com/EdwardHill15/Data/main/graphs/cor_matrix_Beh_cons.png)
+<br>
+<br>
+<br>
+
+![Behaviour Factors in relation to Consciousness Levels](https://raw.githubusercontent.com/EdwardHill15/Data/main/graphs/plot_behaviour_consciousness.png)
+<br>
+<br>
+
+
+# References
+
