@@ -9,29 +9,7 @@ bibliography: ref.bib
 biblio-style: apalike
 link-citations: yes
 ---
-<center>
-<h1>Mind in a holographic field
 <br>
-<br>
-A temporal metaphysical view on the origin and nature of consciousness
-<br>
-<br>
-by
-<br>
-<br>
-Edward F. Hillenaar${^\dagger}$
-<br>
-<br></h1></center>
-
-${\dagger}$ To whom correspondence should be addressed:  
-[totalegezondheidbv@gmail.com](mailto: `r rmarkdown::metadata$email_address`) 
-<br>
-<br>
-Link to [Github Repository](`r rmarkdown::metadata$github_repo`)  
-Last updated on `r Sys.Date()`
-<br>
-<br>
-
 # **Introduction**
 
 This particular ontology of mind and consciousness posits a reduction base as its explanatory framework for the creation and experience of external world images. The **reduction base**, termed "Panvibration," elucidates the psycho-physical laws, including Gibson's invariance laws and optical flow fields, that are involved in generating and perceiving holographic images of external events in the human mind.
