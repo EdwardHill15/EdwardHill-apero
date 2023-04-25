@@ -10,7 +10,7 @@ show_action_link: true
 show_social_links: true
 subtitle: Writer | Data Scientist | Philosopher
 text_align_left: false
-title: Edward Hillenaar
+title: Edward F. Hillenaar
 type: home
 ---
 
