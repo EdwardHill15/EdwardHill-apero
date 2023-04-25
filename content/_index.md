@@ -8,9 +8,9 @@ images:
 - img/cambodia2.JPG
 show_action_link: true
 show_social_links: true
-subtitle: I'm a Writer, Data Scientist and Philosopher
+subtitle: Writer | Data Scientist | Philosopher
 text_align_left: false
-title: Hi, I'm Edward.
+title: Edward Hillenaar
 type: home
 ---
 
