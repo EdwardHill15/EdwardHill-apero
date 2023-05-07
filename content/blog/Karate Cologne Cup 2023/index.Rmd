@@ -1,0 +1,40 @@
+---
+author: Edward F. Hillenaar, MSc. 
+categories:
+- covid
+date: "2023-05-07"
+draft: false
+excerpt: Karate Cologne Cup_2023
+layout: single
+subtitle: Bronze medal fight Quint in the Cologne Cup_2023 in Germany
+title: Cologne Cup Karate
+external_link: ""
+image:
+  caption: Karate
+  focal_point: Smart
+# links:
+# - icon: github
+#   icon_pack: fab
+#   name: github-data
+#   url: https://github.com/EdwardHill15/Data.git/
+# - icon: youtube
+#   icon_pack: fab
+#   name: Video
+#   url: https://www.youtube.com/watch?v=NHMip21Hkp0&t=26s
+
+# slides: "https://edwardhill-xaringan-decks.netlify.app/robbins71#1"
+# summary: An example of using the in-built project page.
+# tags:
+url_code: ""
+url_pdf: ""
+url_slides: ""
+url_video: ""
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Youtube video
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/7hGnf7qBZmg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
