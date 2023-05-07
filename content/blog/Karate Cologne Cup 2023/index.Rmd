@@ -1,7 +1,7 @@
 ---
 author: Edward F. Hillenaar, MSc. 
 categories:
-- covid
+- karate
 date: "2023-05-07"
 draft: false
 excerpt: Karate Cologne Cup_2023
