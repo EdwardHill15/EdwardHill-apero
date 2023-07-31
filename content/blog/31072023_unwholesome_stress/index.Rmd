@@ -93,16 +93,16 @@ long %>%
            width = .75) +
     scale_x_discrete(expand = c(.3, .3)) +
     scale_fill_manual(values = c("grey90", "grey60", "grey25", "grey1")) +
-    facet_wrap(~ gender, strip.position = "bottom") +
+    # facet_wrap(~ gender, strip.position = "bottom") +
     theme_minimal() +
     theme(panel.grid.minor = element_blank(),
           panel.grid.major.x = element_blank(),
           strip.placement = "outside",
           panel.spacing = unit(0, "cm"),
           legend.position = "bottom",
-          strip.text = element_text(size = 20, face = "bold"),
+          strip.text = element_text(size = 18, face = "bold"),
           plot.title.position = "plot",
-          plot.title = element_text(size = 24, face = "bold",
+          plot.title = element_text(size = 22, face = "bold",
                                     margin = margin(b = 20)),
           plot.subtitle = element_text(size = 12, color = "grey30",
                                        margin = margin(b = 20)),
@@ -112,7 +112,38 @@ long %>%
                                       size = 10)) +
     labs(fill = "", x = "", y = "Stress Experience",
          caption = "Data from {NVM database} The Vibrational Mind.",
-         title = "Consciousness and Behavior",
+         title = "Figure 1: consciousness and stress",
+         subtitle = "The relation between unwholesome consciousness and stress experience.")
+```
+
+
+```{r echo=FALSE, warning=FALSE}
+long %>% 
+    ggplot(aes(consciousness, avg_impact, fill = symptoms)) +
+    geom_col(position = "dodge",
+           width = .75) +
+    scale_x_discrete(expand = c(.3, .3)) +
+    scale_fill_manual(values = c("grey90", "grey60", "grey25", "grey1")) +
+    facet_wrap(~ gender, strip.position = "bottom") +
+    theme_minimal() +
+    theme(panel.grid.minor = element_blank(),
+          panel.grid.major.x = element_blank(),
+          strip.placement = "outside",
+          panel.spacing = unit(0, "cm"),
+          legend.position = "bottom",
+          strip.text = element_text(size = 18, face = "bold"),
+          plot.title.position = "plot",
+          plot.title = element_text(size = 22, face = "bold",
+                                    margin = margin(b = 20)),
+          plot.subtitle = element_text(size = 12, color = "grey30",
+                                       margin = margin(b = 20)),
+          plot.caption.position = "plot",
+          plot.caption = element_text(hjust = 0,
+                                      color = "grey50",
+                                      size = 10)) +
+    labs(fill = "", x = "", y = "Stress Experience",
+         caption = "Data from {NVM database} The Vibrational Mind.",
+         title = "Figure 2: consciousness and stress by gender",
          subtitle = "The relation between unwholesome consciousness and stress experience by gender.")
 ```
 
@@ -144,7 +175,7 @@ my_theme <-
       tab_spanner = rlang::expr(gt::tab_options(table.font.size = 'small')),
       # add a custom title and subtitle to every table
       user_added1 = rlang::expr(gt::tab_header(
-        title = "Depression predicted by Unwholesome Consciousness", 
+        title = "Table 1: Depression predicted by Unwholesome Consciousness", 
         subtitle = "Unwholesome Consciousness, Extraversion and Shyness as predictors for Depression")),
       # add a costum data source note
       user_added2 = rlang::expr(gt::tab_source_note(        source_note = "Source: https://github.com/EdwardHill15/Data")),
