@@ -204,12 +204,12 @@ Integrating the results of the visualization and regression analysis, we can inf
 
 However, the lack of a significant relationship between extraversion and shyness with depression suggests that these personality traits might not have a substantial impact on depression or stress in this particular study.
 
-**Limitations and Future Directions**
+# **Limitations and Future Directions**
 It is essential to recognize the limitations of this study. The data collected from the NVM datamatrix might have its specific context and constraints, limiting the generalizability of the findings. Additionally, the cross-sectional nature of the data prevents us from establishing causal relationships between consciousness, behavior types, and depression.
 
 For future research, longitudinal studies could provide deeper insights into the temporal dynamics of consciousness, behavior factors, and mental health outcomes. Additionally, exploring the interplay between different behavior factors and consciousness may help identify specific pathways through which negative valence influences stress-related behaviors and mental health.
 
-**Conclusion**
+# **Conclusion**
 The interpretation of visualization results for different categories, such as gender and behavior types, alongside the regression analysis, has shed light on the association between consciousness and stress-related outcomes. Unwholesome consciousness emerged as a significant predictor of depression, irrespective of gender. However, further research is necessary to investigate the role of behavior factors in the relationship between consciousness and stress, contributing to more targeted and effective interventions for stress management and mental well-being.
 
 
