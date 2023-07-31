@@ -201,7 +201,7 @@ The visualization displayed the distribution of consciousness categories (neutra
 The similarity in the distribution of consciousness categories between genders implies that gender may not play a significant role in determining consciousness levels. This suggests that the impact of consciousness on stress might not be strongly influenced by gender in this study.
 
 **Interpretation by Behavior Types**
-The visualization, unfortunately, did not explicitly show the distribution of behavior factors (negativism, somatization, shyness, psychopathology, and extraversion) based on consciousness categories. However, these behavior factors are crucial elements that may contribute to understanding the relationship between consciousness and stress.
+The visualization also showed the distribution of behavior factors (negativism, somatization, shyness, and extraversion) based on the three categories of wholesome, neutral and unwholesome consciousness. These behavior factors are important elements that may contribute to understanding the relationship between consciousness and stress.
 
 To better interpret the results, further analysis is needed to explore how consciousness levels are associated with different behavior types. For instance, it would be insightful to examine whether individuals with unwholesome consciousness exhibit higher levels of negativism or somatization compared to those with neutral or wholesome consciousness. Understanding the connection between consciousness and behavior factors could provide valuable insights into how negative valence affects stress-related behaviors.
 
