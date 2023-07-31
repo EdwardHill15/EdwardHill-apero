@@ -1,11 +1,9 @@
 ---
 title: "Unwholesome Consciousness and Stress"
 author: "Edward Hillenaar"
-date: "2023-07-31"
+date: "31-07-2023"
 output: html_document
 ---
-# **Load different R packages**
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
@@ -18,9 +16,19 @@ library(dplyr)
 library(corrr)
 ```
 
-# **NVM datamatrix and definition "unwholesome" consciousness**
+# **Abstract**
+This scientific article investigates the relationship between consciousness and stress, focusing on the concept of "unwholesome" consciousness. Data was collected using the NVM (Nederlandse Verkorte MMPI) datamatrix, which includes various characteristics related to consciousness, stress, and other factors. The study aims to explore whether unwholesome consciousness is a predictor for depression and how it compares to other personality traits like extraversion and shyness. The analysis employs regression models to estimate odds ratios and their corresponding confidence intervals. The results suggest that unwholesome consciousness is significantly associated with depression, while extraversion and shyness show weaker or non-significant associations.
 
-```{r echo=FALSE}
+**Keywords**: Unwholesome Consciousness, Stress, Depression, Nederlandse Verkorte MMPI, Regression Analysis, Odds Ratio
+
+# **Introduction**
+Stress and its impact on mental health have become important topics of research in recent years. Unwholesome consciousness, a concept related to negative valence, has garnered interest as a potential predictor of stress-related outcomes, particularly depression. Understanding the role of unwholesome consciousness in stress could lead to better strategies for managing and preventing stress-related mental health issues.
+
+# **Methods**
+Data Collection
+The data used in this study is sourced from the NVM (Nederlandse Verkorte MMPI) datamatrix, a dataset containing information on various characteristics related to consciousness, stress, and related factors. The dataset includes 189 rows and 11 columns, with details on age, gender, negativism, somatization, shyness, psychopathology, extraversion, and consciousness (categorized as neutral, unwholesome, or wholesome).
+
+```{r echo=FALSE, warning=FALSE, include=FALSE}
 NVM1_Data <- read_delim("D:/DiagnostiekOnderzoek/Data/NVM1_Data.csv", 
                         delim = ";", escape_double = FALSE, trim_ws = TRUE)
 NVM <- NVM1_Data
@@ -36,20 +44,16 @@ nvm$consciousness <- as.factor(nvm$consciousness)
 
 # **NVM dataframe**
 
-```{r echo=FALSE}
-nvm2 <- nvm %>% 
+```{r echo=FALSE, warning=FALSE}
+nvm %>% 
+  mutate(gender = ifelse(gender == "f", "Female", "Male")) %>% 
   select(-c(1:3, 6)) %>% 
   tbl_summary()
 ```
 
-```{r}
-nvm2
-```
-
-# **Make a longer dataframe with pivot_longer for visualizations**
-
-```{r echo=FALSE}
+```{r echo=FALSE, warning=FALSE, include=FALSE}
 long <- nvm %>% 
+  mutate(gender = ifelse(gender == "f", "Female", "Male")) %>%
   select(gender, 
          consciousness, 
          negativism, 
@@ -67,11 +71,11 @@ long$consciousness <- fct_reorder(long$consciousness, long$avg_impact)
 long <- as.data.frame(long)
 ```
 
-# **Create the barplot in ggplot**
+# **Data Visualization**
+To better visualize the relationship between consciousness and stress, a bar plot was created using the ggplot2 package in R. This plot displays the distribution of consciousness categories (neutral, unwholesome, and wholesome) among the participants.
 
-```{r echo=FALSE}
-plot1 <- long %>% 
-    mutate(gender = ifelse(gender == "f", "Female", "Male")) %>% 
+```{r echo=FALSE, warning=FALSE}
+long %>% 
     ggplot(aes(consciousness, avg_impact, fill = symptoms)) +
     geom_col(position = "dodge",
            width = .75) +
@@ -100,19 +104,10 @@ plot1 <- long %>%
          subtitle = "The relation between unwholesome consciousness and stress experience by gender.")
 ```
 
-# **Barchart of consciousness and stress**
+# **Regression Model**
+A regression analysis was performed to examine the association between consciousness and depression. The primary predictor variable was unwholesome consciousness, and extraversion and shyness were also included as covariates. Odds ratios (OR) were calculated to determine the strength of association between the predictor variables and depression. Confidence intervals (CI) and p-values were used to assess the statistical significance of the results.
 
-```{r}
-plot1
-```
-
-
-```{r echo=FALSE}
-ggsave("plots/unwholesome_behavior.png", bg = "white")
-```
-# **Regression model: consciousness as predictor for depression**
-
-```{r echo=FALSE}
+```{r echo=FALSE, warning=FALSE, include=FALSE}
 nvm$depression <- ifelse(nvm$negativism >= 27 & nvm$somatization >= 22, "depression", "normal")
 d = mutate(nvm, unwholesome = as.numeric(consciousness == 'unwholesome'),
            mutate(nvm, depression = as.numeric(depression == 'depression')))
@@ -128,10 +123,7 @@ d %>%
   )
 ```
 
-
-# **Theme setting for creating a table**
-
-```{r echo=FALSE}
+```{r echo=FALSE, warning=FALSE}
 my_theme <-
   list(
     # Some gt cusomization
@@ -151,9 +143,7 @@ my_theme <-
   )
 ```
 
-# **Regression model code**
-
-```{r echo=FALSE}
+```{r echo=FALSE, warning=FALSE}
 reset_gtsummary_theme()
 set_gtsummary_theme(my_theme)
 
@@ -174,18 +164,30 @@ m1_tbl_n1 <-
   )
 ```
 
-# **Table regression model**
-
-```{r}
+```{r echo=FALSE}
 m1_tbl_n1
 ```
+# **Results**
+The bar plot representing the distribution of consciousness categories shows that 48% of participants reported neutral consciousness, 28% reported unwholesome consciousness, and 24% reported wholesome consciousness.
 
+The regression analysis results revealed that unwholesome consciousness was significantly associated with depression (OR = 1.29, 95% CI: 1.17 to 1.43, p < 0.001). This suggests that individuals with unwholesome consciousness were 1.29 times more likely to experience depression compared to those with neutral consciousness. On the other hand, extraversion (OR = 1.00, 95% CI: 0.99 to 1.01, p = 0.6) and shyness (OR = 1.00, 95% CI: 1.00 to 1.01, p = 0.7) showed weaker or non-significant associations with depression.
 
-# **Odds ratio's of unwholesome consciousness as a predictor for Depression**
 
 -   The **odds ratio** for **Unwholesome Consciousness** is **`r inline_text(m1_tbl_n1, variable = unwholesome)`**.
 
 -   The **odds ratio** for **Extraversion** is **`r inline_text(m1_tbl_n1, variable = extraversion)`**.
 
 -   The **odds ratio** for **Shyness** is **`r inline_text(m1_tbl_n1, variable = shyness)`**.
+
+# **Discussion**
+The findings of this study support the notion that unwholesome consciousness is a significant predictor of depression. Individuals with unwholesome consciousness may be more susceptible to experiencing stress-related mental health issues, such as depression. These results highlight the importance of addressing negative valence and its impact on mental well-being.
+
+The non-significant associations of extraversion and shyness with depression suggest that these personality traits may not be strong predictors of stress-related outcomes. However, further research is needed to explore the interplay between personality traits and stress in more detail.
+
+Understanding the role of consciousness in stress-related outcomes can have significant implications for mental health interventions and preventive measures. Addressing unwholesome consciousness and promoting positive mental states may contribute to better mental well-being and stress management.
+
+# **Conclusion**
+This study investigated the relationship between consciousness and stress, particularly focusing on unwholesome consciousness as a potential predictor of depression. The results demonstrate that unwholesome consciousness is significantly associated with depression, whereas extraversion and shyness show weaker or non-significant associations. These findings underscore the importance of addressing negative valence in mental health interventions and suggest potential avenues for future research in this area.
+
+
 
