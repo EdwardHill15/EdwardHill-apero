@@ -9,7 +9,7 @@ output: html_document
 
 <div id="abstract" class="section level1">
 <h1><strong>Abstract</strong></h1>
-<p>This scientific article investigates the relationship between consciousness and stress, focusing on the concept of “unwholesome” consciousness. Data was collected using the NVM (Nederlandse Verkorte MMPI) datamatrix, which includes various characteristics related to consciousness, stress, and other factors. The study aims to explore whether unwholesome consciousness is a predictor for depression and how it compares to other personality traits like extraversion and shyness. The analysis employs regression models to estimate odds ratios and their corresponding confidence intervals. The results suggest that unwholesome consciousness is significantly associated with depression, while extraversion and shyness show weaker or non-significant associations.</p>
+<p>This study investigates the relationship between consciousness and stress, with a specific focus on “unwholesome” consciousness. The study utilizes data from the Nederlandse Verkorte MMPI (NVM) in a dataset encompassing various characteristics related to consciousness and mental stress. The primary aim is to explore whether unwholesome consciousness predicts depression. Regression analysis estimates odds ratios to quantify the strength of the association between consciousness and depression. The results show a significant link between unwholesome consciousness and depression, suggesting that negative valence plays a key role in susceptibility to stress-related mental health issues. The visualization of behavior factors based on consciousness categories provides further insights into their impact on stress outcomes. Gender’s influence on consciousness levels in relation to stress is explored, revealing a universal relationship between unwholesome consciousness and depression across genders. The findings contribute to stress management and mental well-being interventions. Addressing unwholesome consciousness may promote positive cognitive patterns and emotional well-being. Understanding diverse pathways between consciousness and stress helps develop effective strategies for mental health.</p>
 <p><strong>Keywords</strong>: Unwholesome Consciousness, Stress, Depression, Nederlandse Verkorte MMPI, Regression Analysis, Odds Ratio</p>
 </div>
 <div id="introduction" class="section level1">
@@ -27,23 +27,23 @@ output: html_document
 <p><strong>Data Collection</strong>
 The data used in this study is sourced from the NVM (Nederlandse Verkorte MMPI) datamatrix, a dataset containing information on various characteristics related to consciousness, stress, and related factors. The dataset includes 189 rows and 11 columns, with details on age, gender, negativism, somatization, shyness, psychopathology, extraversion, and consciousness (categorized as neutral, unwholesome, or wholesome).</p>
 <p><strong>NVM dataframe</strong></p>
-<div id="dzktwqxgcp" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#dzktwqxgcp table {
+<div id="oqfyobhnfz" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#oqfyobhnfz table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#dzktwqxgcp thead, #dzktwqxgcp tbody, #dzktwqxgcp tfoot, #dzktwqxgcp tr, #dzktwqxgcp td, #dzktwqxgcp th {
+#oqfyobhnfz thead, #oqfyobhnfz tbody, #oqfyobhnfz tfoot, #oqfyobhnfz tr, #oqfyobhnfz td, #oqfyobhnfz th {
   border-style: none;
 }
 
-#dzktwqxgcp p {
+#oqfyobhnfz p {
   margin: 0;
   padding: 0;
 }
 
-#dzktwqxgcp .gt_table {
+#oqfyobhnfz .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -69,12 +69,12 @@ The data used in this study is sourced from the NVM (Nederlandse Verkorte MMPI) 
   border-left-color: #D3D3D3;
 }
 
-#dzktwqxgcp .gt_caption {
+#oqfyobhnfz .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#dzktwqxgcp .gt_title {
+#oqfyobhnfz .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -86,7 +86,7 @@ The data used in this study is sourced from the NVM (Nederlandse Verkorte MMPI) 
   border-bottom-width: 0;
 }
 
-#dzktwqxgcp .gt_subtitle {
+#oqfyobhnfz .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -98,7 +98,7 @@ The data used in this study is sourced from the NVM (Nederlandse Verkorte MMPI) 
   border-top-width: 0;
 }
 
-#dzktwqxgcp .gt_heading {
+#oqfyobhnfz .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -110,13 +110,13 @@ The data used in this study is sourced from the NVM (Nederlandse Verkorte MMPI) 
   border-right-color: #D3D3D3;
 }
 
-#dzktwqxgcp .gt_bottom_border {
+#oqfyobhnfz .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#dzktwqxgcp .gt_col_headings {
+#oqfyobhnfz .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -131,7 +131,7 @@ The data used in this study is sourced from the NVM (Nederlandse Verkorte MMPI) 
   border-right-color: #D3D3D3;
 }
 
-#dzktwqxgcp .gt_col_heading {
+#oqfyobhnfz .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -151,7 +151,7 @@ The data used in this study is sourced from the NVM (Nederlandse Verkorte MMPI) 
   overflow-x: hidden;
 }
 
-#dzktwqxgcp .gt_column_spanner_outer {
+#oqfyobhnfz .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -163,15 +163,15 @@ The data used in this study is sourced from the NVM (Nederlandse Verkorte MMPI) 
   padding-right: 4px;
 }
 
-#dzktwqxgcp .gt_column_spanner_outer:first-child {
+#oqfyobhnfz .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#dzktwqxgcp .gt_column_spanner_outer:last-child {
+#oqfyobhnfz .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#dzktwqxgcp .gt_column_spanner {
+#oqfyobhnfz .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -183,11 +183,11 @@ The data used in this study is sourced from the NVM (Nederlandse Verkorte MMPI) 
   width: 100%;
 }
 
-#dzktwqxgcp .gt_spanner_row {
+#oqfyobhnfz .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#dzktwqxgcp .gt_group_heading {
+#oqfyobhnfz .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -213,7 +213,7 @@ The data used in this study is sourced from the NVM (Nederlandse Verkorte MMPI) 
   text-align: left;
 }
 
-#dzktwqxgcp .gt_empty_group_heading {
+#oqfyobhnfz .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -228,15 +228,15 @@ The data used in this study is sourced from the NVM (Nederlandse Verkorte MMPI) 
   vertical-align: middle;
 }
 
-#dzktwqxgcp .gt_from_md > :first-child {
+#oqfyobhnfz .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#dzktwqxgcp .gt_from_md > :last-child {
+#oqfyobhnfz .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#dzktwqxgcp .gt_row {
+#oqfyobhnfz .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -255,7 +255,7 @@ The data used in this study is sourced from the NVM (Nederlandse Verkorte MMPI) 
   overflow-x: hidden;
 }
 
-#dzktwqxgcp .gt_stub {
+#oqfyobhnfz .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -268,7 +268,7 @@ The data used in this study is sourced from the NVM (Nederlandse Verkorte MMPI) 
   padding-right: 5px;
 }
 
-#dzktwqxgcp .gt_stub_row_group {
+#oqfyobhnfz .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -282,15 +282,15 @@ The data used in this study is sourced from the NVM (Nederlandse Verkorte MMPI) 
   vertical-align: top;
 }
 
-#dzktwqxgcp .gt_row_group_first td {
+#oqfyobhnfz .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#dzktwqxgcp .gt_row_group_first th {
+#oqfyobhnfz .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#dzktwqxgcp .gt_summary_row {
+#oqfyobhnfz .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -300,16 +300,16 @@ The data used in this study is sourced from the NVM (Nederlandse Verkorte MMPI) 
   padding-right: 5px;
 }
 
-#dzktwqxgcp .gt_first_summary_row {
+#oqfyobhnfz .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#dzktwqxgcp .gt_first_summary_row.thick {
+#oqfyobhnfz .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#dzktwqxgcp .gt_last_summary_row {
+#oqfyobhnfz .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -319,7 +319,7 @@ The data used in this study is sourced from the NVM (Nederlandse Verkorte MMPI) 
   border-bottom-color: #D3D3D3;
 }
 
-#dzktwqxgcp .gt_grand_summary_row {
+#oqfyobhnfz .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -329,7 +329,7 @@ The data used in this study is sourced from the NVM (Nederlandse Verkorte MMPI) 
   padding-right: 5px;
 }
 
-#dzktwqxgcp .gt_first_grand_summary_row {
+#oqfyobhnfz .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -339,7 +339,7 @@ The data used in this study is sourced from the NVM (Nederlandse Verkorte MMPI) 
   border-top-color: #D3D3D3;
 }
 
-#dzktwqxgcp .gt_last_grand_summary_row_top {
+#oqfyobhnfz .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -349,11 +349,11 @@ The data used in this study is sourced from the NVM (Nederlandse Verkorte MMPI) 
   border-bottom-color: #D3D3D3;
 }
 
-#dzktwqxgcp .gt_striped {
+#oqfyobhnfz .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#dzktwqxgcp .gt_table_body {
+#oqfyobhnfz .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -362,7 +362,7 @@ The data used in this study is sourced from the NVM (Nederlandse Verkorte MMPI) 
   border-bottom-color: #D3D3D3;
 }
 
-#dzktwqxgcp .gt_footnotes {
+#oqfyobhnfz .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -376,7 +376,7 @@ The data used in this study is sourced from the NVM (Nederlandse Verkorte MMPI) 
   border-right-color: #D3D3D3;
 }
 
-#dzktwqxgcp .gt_footnote {
+#oqfyobhnfz .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -385,7 +385,7 @@ The data used in this study is sourced from the NVM (Nederlandse Verkorte MMPI) 
   padding-right: 5px;
 }
 
-#dzktwqxgcp .gt_sourcenotes {
+#oqfyobhnfz .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -399,7 +399,7 @@ The data used in this study is sourced from the NVM (Nederlandse Verkorte MMPI) 
   border-right-color: #D3D3D3;
 }
 
-#dzktwqxgcp .gt_sourcenote {
+#oqfyobhnfz .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -407,63 +407,63 @@ The data used in this study is sourced from the NVM (Nederlandse Verkorte MMPI) 
   padding-right: 5px;
 }
 
-#dzktwqxgcp .gt_left {
+#oqfyobhnfz .gt_left {
   text-align: left;
 }
 
-#dzktwqxgcp .gt_center {
+#oqfyobhnfz .gt_center {
   text-align: center;
 }
 
-#dzktwqxgcp .gt_right {
+#oqfyobhnfz .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#dzktwqxgcp .gt_font_normal {
+#oqfyobhnfz .gt_font_normal {
   font-weight: normal;
 }
 
-#dzktwqxgcp .gt_font_bold {
+#oqfyobhnfz .gt_font_bold {
   font-weight: bold;
 }
 
-#dzktwqxgcp .gt_font_italic {
+#oqfyobhnfz .gt_font_italic {
   font-style: italic;
 }
 
-#dzktwqxgcp .gt_super {
+#oqfyobhnfz .gt_super {
   font-size: 65%;
 }
 
-#dzktwqxgcp .gt_footnote_marks {
+#oqfyobhnfz .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#dzktwqxgcp .gt_asterisk {
+#oqfyobhnfz .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#dzktwqxgcp .gt_indent_1 {
+#oqfyobhnfz .gt_indent_1 {
   text-indent: 5px;
 }
 
-#dzktwqxgcp .gt_indent_2 {
+#oqfyobhnfz .gt_indent_2 {
   text-indent: 10px;
 }
 
-#dzktwqxgcp .gt_indent_3 {
+#oqfyobhnfz .gt_indent_3 {
   text-indent: 15px;
 }
 
-#dzktwqxgcp .gt_indent_4 {
+#oqfyobhnfz .gt_indent_4 {
   text-indent: 20px;
 }
 
-#dzktwqxgcp .gt_indent_5 {
+#oqfyobhnfz .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -516,23 +516,23 @@ To better visualize the relationship between consciousness and stress, a bar plo
 <p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
 <p><strong>Regression Model</strong>
 A regression analysis was performed to examine the association between consciousness and depression. The primary predictor variable was unwholesome consciousness, and extraversion and shyness were also included as covariates. Odds ratios (OR) were calculated to determine the strength of association between the predictor variables and depression. Confidence intervals (CI) and p-values were used to assess the statistical significance of the results.</p>
-<div id="isyscnbdhu" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#isyscnbdhu table {
+<div id="vyvwfidnss" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#vyvwfidnss table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#isyscnbdhu thead, #isyscnbdhu tbody, #isyscnbdhu tfoot, #isyscnbdhu tr, #isyscnbdhu td, #isyscnbdhu th {
+#vyvwfidnss thead, #vyvwfidnss tbody, #vyvwfidnss tfoot, #vyvwfidnss tr, #vyvwfidnss td, #vyvwfidnss th {
   border-style: none;
 }
 
-#isyscnbdhu p {
+#vyvwfidnss p {
   margin: 0;
   padding: 0;
 }
 
-#isyscnbdhu .gt_table {
+#vyvwfidnss .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -558,12 +558,12 @@ A regression analysis was performed to examine the association between conscious
   border-left-color: #D3D3D3;
 }
 
-#isyscnbdhu .gt_caption {
+#vyvwfidnss .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#isyscnbdhu .gt_title {
+#vyvwfidnss .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -575,7 +575,7 @@ A regression analysis was performed to examine the association between conscious
   border-bottom-width: 0;
 }
 
-#isyscnbdhu .gt_subtitle {
+#vyvwfidnss .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -587,7 +587,7 @@ A regression analysis was performed to examine the association between conscious
   border-top-width: 0;
 }
 
-#isyscnbdhu .gt_heading {
+#vyvwfidnss .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -599,13 +599,13 @@ A regression analysis was performed to examine the association between conscious
   border-right-color: #D3D3D3;
 }
 
-#isyscnbdhu .gt_bottom_border {
+#vyvwfidnss .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#isyscnbdhu .gt_col_headings {
+#vyvwfidnss .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -620,7 +620,7 @@ A regression analysis was performed to examine the association between conscious
   border-right-color: #D3D3D3;
 }
 
-#isyscnbdhu .gt_col_heading {
+#vyvwfidnss .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -640,7 +640,7 @@ A regression analysis was performed to examine the association between conscious
   overflow-x: hidden;
 }
 
-#isyscnbdhu .gt_column_spanner_outer {
+#vyvwfidnss .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -652,15 +652,15 @@ A regression analysis was performed to examine the association between conscious
   padding-right: 4px;
 }
 
-#isyscnbdhu .gt_column_spanner_outer:first-child {
+#vyvwfidnss .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#isyscnbdhu .gt_column_spanner_outer:last-child {
+#vyvwfidnss .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#isyscnbdhu .gt_column_spanner {
+#vyvwfidnss .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -672,11 +672,11 @@ A regression analysis was performed to examine the association between conscious
   width: 100%;
 }
 
-#isyscnbdhu .gt_spanner_row {
+#vyvwfidnss .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#isyscnbdhu .gt_group_heading {
+#vyvwfidnss .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -702,7 +702,7 @@ A regression analysis was performed to examine the association between conscious
   text-align: left;
 }
 
-#isyscnbdhu .gt_empty_group_heading {
+#vyvwfidnss .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -717,15 +717,15 @@ A regression analysis was performed to examine the association between conscious
   vertical-align: middle;
 }
 
-#isyscnbdhu .gt_from_md > :first-child {
+#vyvwfidnss .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#isyscnbdhu .gt_from_md > :last-child {
+#vyvwfidnss .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#isyscnbdhu .gt_row {
+#vyvwfidnss .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -744,7 +744,7 @@ A regression analysis was performed to examine the association between conscious
   overflow-x: hidden;
 }
 
-#isyscnbdhu .gt_stub {
+#vyvwfidnss .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -757,7 +757,7 @@ A regression analysis was performed to examine the association between conscious
   padding-right: 5px;
 }
 
-#isyscnbdhu .gt_stub_row_group {
+#vyvwfidnss .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -771,15 +771,15 @@ A regression analysis was performed to examine the association between conscious
   vertical-align: top;
 }
 
-#isyscnbdhu .gt_row_group_first td {
+#vyvwfidnss .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#isyscnbdhu .gt_row_group_first th {
+#vyvwfidnss .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#isyscnbdhu .gt_summary_row {
+#vyvwfidnss .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -789,16 +789,16 @@ A regression analysis was performed to examine the association between conscious
   padding-right: 5px;
 }
 
-#isyscnbdhu .gt_first_summary_row {
+#vyvwfidnss .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#isyscnbdhu .gt_first_summary_row.thick {
+#vyvwfidnss .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#isyscnbdhu .gt_last_summary_row {
+#vyvwfidnss .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -808,7 +808,7 @@ A regression analysis was performed to examine the association between conscious
   border-bottom-color: #D3D3D3;
 }
 
-#isyscnbdhu .gt_grand_summary_row {
+#vyvwfidnss .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -818,7 +818,7 @@ A regression analysis was performed to examine the association between conscious
   padding-right: 5px;
 }
 
-#isyscnbdhu .gt_first_grand_summary_row {
+#vyvwfidnss .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -828,7 +828,7 @@ A regression analysis was performed to examine the association between conscious
   border-top-color: #D3D3D3;
 }
 
-#isyscnbdhu .gt_last_grand_summary_row_top {
+#vyvwfidnss .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -838,11 +838,11 @@ A regression analysis was performed to examine the association between conscious
   border-bottom-color: #D3D3D3;
 }
 
-#isyscnbdhu .gt_striped {
+#vyvwfidnss .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#isyscnbdhu .gt_table_body {
+#vyvwfidnss .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -851,7 +851,7 @@ A regression analysis was performed to examine the association between conscious
   border-bottom-color: #D3D3D3;
 }
 
-#isyscnbdhu .gt_footnotes {
+#vyvwfidnss .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -865,7 +865,7 @@ A regression analysis was performed to examine the association between conscious
   border-right-color: #D3D3D3;
 }
 
-#isyscnbdhu .gt_footnote {
+#vyvwfidnss .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -874,7 +874,7 @@ A regression analysis was performed to examine the association between conscious
   padding-right: 5px;
 }
 
-#isyscnbdhu .gt_sourcenotes {
+#vyvwfidnss .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -888,7 +888,7 @@ A regression analysis was performed to examine the association between conscious
   border-right-color: #D3D3D3;
 }
 
-#isyscnbdhu .gt_sourcenote {
+#vyvwfidnss .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -896,63 +896,63 @@ A regression analysis was performed to examine the association between conscious
   padding-right: 5px;
 }
 
-#isyscnbdhu .gt_left {
+#vyvwfidnss .gt_left {
   text-align: left;
 }
 
-#isyscnbdhu .gt_center {
+#vyvwfidnss .gt_center {
   text-align: center;
 }
 
-#isyscnbdhu .gt_right {
+#vyvwfidnss .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#isyscnbdhu .gt_font_normal {
+#vyvwfidnss .gt_font_normal {
   font-weight: normal;
 }
 
-#isyscnbdhu .gt_font_bold {
+#vyvwfidnss .gt_font_bold {
   font-weight: bold;
 }
 
-#isyscnbdhu .gt_font_italic {
+#vyvwfidnss .gt_font_italic {
   font-style: italic;
 }
 
-#isyscnbdhu .gt_super {
+#vyvwfidnss .gt_super {
   font-size: 65%;
 }
 
-#isyscnbdhu .gt_footnote_marks {
+#vyvwfidnss .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#isyscnbdhu .gt_asterisk {
+#vyvwfidnss .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#isyscnbdhu .gt_indent_1 {
+#vyvwfidnss .gt_indent_1 {
   text-indent: 5px;
 }
 
-#isyscnbdhu .gt_indent_2 {
+#vyvwfidnss .gt_indent_2 {
   text-indent: 10px;
 }
 
-#isyscnbdhu .gt_indent_3 {
+#vyvwfidnss .gt_indent_3 {
   text-indent: 15px;
 }
 
-#isyscnbdhu .gt_indent_4 {
+#vyvwfidnss .gt_indent_4 {
   text-indent: 20px;
 }
 
-#isyscnbdhu .gt_indent_5 {
+#vyvwfidnss .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
