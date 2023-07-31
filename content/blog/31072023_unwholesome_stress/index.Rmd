@@ -28,7 +28,7 @@ Unwholesome consciousness has been hypothesized to play a pivotal role in indivi
 
 In this pursuit of understanding the complex interplay between consciousness and stress, the current study delves into the relationship between unwholesome consciousness and depression. The investigation utilizes data from the Nederlandse Verkorte MMPI (NVM) datamatrix, which provides comprehensive information on various characteristics related to consciousness, stress, and other relevant factors.
 
-The overarching goal of this research is to shed light on whether unwholesome consciousness serves as a predictor for depression. Additionally, the study aims to elucidate how this relationship compares to other personality traits, such as extraversion and shyness, known to influence stress responses. By employing advanced statistical techniques, particularly regression analysis to estimate odds ratios, we aim to quantify the strength of association between consciousness and depression.
+The overarching goal of this research is to shed light on whether unwholesome consciousness serves as a predictor for depression. By employing advanced statistical techniques, particularly regression analysis to estimate odds ratios, we aim to quantify the strength of association between consciousness and depression.
 
 Moreover, the study explicitly examines the distribution of behavior factors, including negativism, somatization, shyness, psychopathology, and extraversion, based on consciousness categories. By exploring these additional variables, we aim to gain a more nuanced understanding of how consciousness operates in the broader context of stress-related outcomes.
 
