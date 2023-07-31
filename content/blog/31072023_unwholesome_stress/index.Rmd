@@ -38,7 +38,7 @@ In conclusion, this study endeavors to provide a comprehensive examination of th
 
 # **Methods**
 **Data Collection**
-The data used in this study is sourced from the NVM (Nederlandse Verkorte MMPI) datamatrix, a dataset containing information on various characteristics related to consciousness, stress, and related factors. The dataset includes 189 rows and 11 columns, with details on age, gender, negativism, somatization, shyness, psychopathology, extraversion, and consciousness (categorized as neutral, unwholesome, or wholesome).
+The data used in this study is sourced from the NVM (Nederlandse Verkorte MMPI) datamatrix, a dataset containing information on various characteristics related to consciousness and stress. The dataset includes 188 rows and 11 columns, with details on age, gender, negativism, somatization, shyness, psychopathology, extraversion, and consciousness (categorized as neutral, unwholesome, or wholesome).
 
 ```{r echo=FALSE, warning=FALSE, include=FALSE}
 NVM1_Data <- read_delim("D:/DiagnostiekOnderzoek/Data/NVM1_Data.csv", 
