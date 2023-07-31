@@ -22,10 +22,22 @@ This scientific article investigates the relationship between consciousness and 
 **Keywords**: Unwholesome Consciousness, Stress, Depression, Nederlandse Verkorte MMPI, Regression Analysis, Odds Ratio
 
 # **Introduction**
-Stress and its impact on mental health have become important topics of research in recent years. Unwholesome consciousness, a concept related to negative valence, has garnered interest as a potential predictor of stress-related outcomes, particularly depression. Understanding the role of unwholesome consciousness in stress could lead to better strategies for managing and preventing stress-related mental health issues.
+Stress and its impact on mental health have become central themes in contemporary scientific research. As the complexities of modern life continue to increase, understanding the factors that contribute to stress-related outcomes, particularly depression, has become a pressing concern. One such factor that has garnered significant interest is the concept of "unwholesome" consciousness, characterized by negative valence and a pessimistic worldview.
+
+Unwholesome consciousness has been hypothesized to play a pivotal role in individuals' susceptibility to stress-related mental health issues, particularly depression. This state of consciousness involves an inclination towards negative thoughts, feelings of hopelessness, and a tendency to perceive adverse situations more intensely. As a result, individuals with unwholesome consciousness may be more prone to experiencing the adverse effects of stress on their mental well-being.
+
+In this pursuit of understanding the complex interplay between consciousness and stress, the current study delves into the relationship between unwholesome consciousness and depression. The investigation utilizes data from the Nederlandse Verkorte MMPI (NVM) datamatrix, which provides comprehensive information on various characteristics related to consciousness, stress, and other relevant factors.
+
+The overarching goal of this research is to shed light on whether unwholesome consciousness serves as a predictor for depression. Additionally, the study aims to elucidate how this relationship compares to other personality traits, such as extraversion and shyness, known to influence stress responses. By employing advanced statistical techniques, particularly regression analysis to estimate odds ratios, we aim to quantify the strength of association between consciousness and depression.
+
+Moreover, the study also takes into account the potential influence of gender and behavior factors, such as negativism, somatization, and psychopathology, in the relationship between consciousness and stress. By exploring these additional variables, we aim to gain a more nuanced understanding of how consciousness operates in the broader context of stress-related outcomes.
+
+The findings of this research hold the promise of contributing to the development of targeted interventions and strategies for stress management and mental well-being. By identifying the role of unwholesome consciousness in depression, we can potentially design interventions aimed at promoting more positive cognitive patterns and emotional well-being. Furthermore, the exploration of other personality traits and behavior factors in relation to consciousness can provide valuable insights into the diverse pathways through which stress manifests in individuals' lives.
+
+In conclusion, this study endeavors to provide a comprehensive examination of the relationship between consciousness and stress-related outcomes, with a particular focus on unwholesome consciousness as a potential predictor of depression. By addressing the pressing need to understand the mechanisms underlying stress and depression, we aspire to contribute to the advancement of mental health research and the development of effective intervention strategies.
 
 # **Methods**
-Data Collection
+_Data Collection_
 The data used in this study is sourced from the NVM (Nederlandse Verkorte MMPI) datamatrix, a dataset containing information on various characteristics related to consciousness, stress, and related factors. The dataset includes 189 rows and 11 columns, with details on age, gender, negativism, somatization, shyness, psychopathology, extraversion, and consciousness (categorized as neutral, unwholesome, or wholesome).
 
 ```{r echo=FALSE, warning=FALSE, include=FALSE}
@@ -42,7 +54,7 @@ nvm$consciousness <- ifelse(nvm$psychopathology >= 6, "unwholesome",
 nvm$consciousness <- as.factor(nvm$consciousness)
 ```
 
-# **NVM dataframe**
+_NVM dataframe_
 
 ```{r echo=FALSE, warning=FALSE}
 nvm %>% 
@@ -71,7 +83,7 @@ long$consciousness <- fct_reorder(long$consciousness, long$avg_impact)
 long <- as.data.frame(long)
 ```
 
-# **Data Visualization**
+_Data Visualization_
 To better visualize the relationship between consciousness and stress, a bar plot was created using the ggplot2 package in R. This plot displays the distribution of consciousness categories (neutral, unwholesome, and wholesome) among the participants.
 
 ```{r echo=FALSE, warning=FALSE}
@@ -104,7 +116,7 @@ long %>%
          subtitle = "The relation between unwholesome consciousness and stress experience by gender.")
 ```
 
-# **Regression Model**
+_Regression Model_
 A regression analysis was performed to examine the association between consciousness and depression. The primary predictor variable was unwholesome consciousness, and extraversion and shyness were also included as covariates. Odds ratios (OR) were calculated to determine the strength of association between the predictor variables and depression. Confidence intervals (CI) and p-values were used to assess the statistical significance of the results.
 
 ```{r echo=FALSE, warning=FALSE, include=FALSE}

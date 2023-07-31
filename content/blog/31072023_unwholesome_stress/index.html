@@ -14,32 +14,36 @@ output: html_document
 </div>
 <div id="introduction" class="section level1">
 <h1><strong>Introduction</strong></h1>
-<p>Stress and its impact on mental health have become important topics of research in recent years. Unwholesome consciousness, a concept related to negative valence, has garnered interest as a potential predictor of stress-related outcomes, particularly depression. Understanding the role of unwholesome consciousness in stress could lead to better strategies for managing and preventing stress-related mental health issues.</p>
+<p>Stress and its impact on mental health have become central themes in contemporary scientific research. As the complexities of modern life continue to increase, understanding the factors that contribute to stress-related outcomes, particularly depression, has become a pressing concern. One such factor that has garnered significant interest is the concept of “unwholesome” consciousness, characterized by negative valence and a pessimistic worldview.</p>
+<p>Unwholesome consciousness has been hypothesized to play a pivotal role in individuals’ susceptibility to stress-related mental health issues, particularly depression. This state of consciousness involves an inclination towards negative thoughts, feelings of hopelessness, and a tendency to perceive adverse situations more intensely. As a result, individuals with unwholesome consciousness may be more prone to experiencing the adverse effects of stress on their mental well-being.</p>
+<p>In this pursuit of understanding the complex interplay between consciousness and stress, the current study delves into the relationship between unwholesome consciousness and depression. The investigation utilizes data from the Nederlandse Verkorte MMPI (NVM) datamatrix, which provides comprehensive information on various characteristics related to consciousness, stress, and other relevant factors.</p>
+<p>The overarching goal of this research is to shed light on whether unwholesome consciousness serves as a predictor for depression. Additionally, the study aims to elucidate how this relationship compares to other personality traits, such as extraversion and shyness, known to influence stress responses. By employing advanced statistical techniques, particularly regression analysis to estimate odds ratios, we aim to quantify the strength of association between consciousness and depression.</p>
+<p>Moreover, the study also takes into account the potential influence of gender and behavior factors, such as negativism, somatization, and psychopathology, in the relationship between consciousness and stress. By exploring these additional variables, we aim to gain a more nuanced understanding of how consciousness operates in the broader context of stress-related outcomes.</p>
+<p>The findings of this research hold the promise of contributing to the development of targeted interventions and strategies for stress management and mental well-being. By identifying the role of unwholesome consciousness in depression, we can potentially design interventions aimed at promoting more positive cognitive patterns and emotional well-being. Furthermore, the exploration of other personality traits and behavior factors in relation to consciousness can provide valuable insights into the diverse pathways through which stress manifests in individuals’ lives.</p>
+<p>In conclusion, this study endeavors to provide a comprehensive examination of the relationship between consciousness and stress-related outcomes, with a particular focus on unwholesome consciousness as a potential predictor of depression. By addressing the pressing need to understand the mechanisms underlying stress and depression, we aspire to contribute to the advancement of mental health research and the development of effective intervention strategies.</p>
 </div>
 <div id="methods" class="section level1">
 <h1><strong>Methods</strong></h1>
-<p>Data Collection
+<p><em>Data Collection</em>
 The data used in this study is sourced from the NVM (Nederlandse Verkorte MMPI) datamatrix, a dataset containing information on various characteristics related to consciousness, stress, and related factors. The dataset includes 189 rows and 11 columns, with details on age, gender, negativism, somatization, shyness, psychopathology, extraversion, and consciousness (categorized as neutral, unwholesome, or wholesome).</p>
-</div>
-<div id="nvm-dataframe" class="section level1">
-<h1><strong>NVM dataframe</strong></h1>
-<div id="swakigxlzp" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#swakigxlzp table {
+<p><em>NVM dataframe</em></p>
+<div id="pwzoyqyuqk" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#pwzoyqyuqk table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#swakigxlzp thead, #swakigxlzp tbody, #swakigxlzp tfoot, #swakigxlzp tr, #swakigxlzp td, #swakigxlzp th {
+#pwzoyqyuqk thead, #pwzoyqyuqk tbody, #pwzoyqyuqk tfoot, #pwzoyqyuqk tr, #pwzoyqyuqk td, #pwzoyqyuqk th {
   border-style: none;
 }
 
-#swakigxlzp p {
+#pwzoyqyuqk p {
   margin: 0;
   padding: 0;
 }
 
-#swakigxlzp .gt_table {
+#pwzoyqyuqk .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -65,12 +69,12 @@ The data used in this study is sourced from the NVM (Nederlandse Verkorte MMPI) 
   border-left-color: #D3D3D3;
 }
 
-#swakigxlzp .gt_caption {
+#pwzoyqyuqk .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#swakigxlzp .gt_title {
+#pwzoyqyuqk .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -82,7 +86,7 @@ The data used in this study is sourced from the NVM (Nederlandse Verkorte MMPI) 
   border-bottom-width: 0;
 }
 
-#swakigxlzp .gt_subtitle {
+#pwzoyqyuqk .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -94,7 +98,7 @@ The data used in this study is sourced from the NVM (Nederlandse Verkorte MMPI) 
   border-top-width: 0;
 }
 
-#swakigxlzp .gt_heading {
+#pwzoyqyuqk .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -106,13 +110,13 @@ The data used in this study is sourced from the NVM (Nederlandse Verkorte MMPI) 
   border-right-color: #D3D3D3;
 }
 
-#swakigxlzp .gt_bottom_border {
+#pwzoyqyuqk .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#swakigxlzp .gt_col_headings {
+#pwzoyqyuqk .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -127,7 +131,7 @@ The data used in this study is sourced from the NVM (Nederlandse Verkorte MMPI) 
   border-right-color: #D3D3D3;
 }
 
-#swakigxlzp .gt_col_heading {
+#pwzoyqyuqk .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -147,7 +151,7 @@ The data used in this study is sourced from the NVM (Nederlandse Verkorte MMPI) 
   overflow-x: hidden;
 }
 
-#swakigxlzp .gt_column_spanner_outer {
+#pwzoyqyuqk .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -159,15 +163,15 @@ The data used in this study is sourced from the NVM (Nederlandse Verkorte MMPI) 
   padding-right: 4px;
 }
 
-#swakigxlzp .gt_column_spanner_outer:first-child {
+#pwzoyqyuqk .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#swakigxlzp .gt_column_spanner_outer:last-child {
+#pwzoyqyuqk .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#swakigxlzp .gt_column_spanner {
+#pwzoyqyuqk .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -179,11 +183,11 @@ The data used in this study is sourced from the NVM (Nederlandse Verkorte MMPI) 
   width: 100%;
 }
 
-#swakigxlzp .gt_spanner_row {
+#pwzoyqyuqk .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#swakigxlzp .gt_group_heading {
+#pwzoyqyuqk .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -209,7 +213,7 @@ The data used in this study is sourced from the NVM (Nederlandse Verkorte MMPI) 
   text-align: left;
 }
 
-#swakigxlzp .gt_empty_group_heading {
+#pwzoyqyuqk .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -224,15 +228,15 @@ The data used in this study is sourced from the NVM (Nederlandse Verkorte MMPI) 
   vertical-align: middle;
 }
 
-#swakigxlzp .gt_from_md > :first-child {
+#pwzoyqyuqk .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#swakigxlzp .gt_from_md > :last-child {
+#pwzoyqyuqk .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#swakigxlzp .gt_row {
+#pwzoyqyuqk .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -251,7 +255,7 @@ The data used in this study is sourced from the NVM (Nederlandse Verkorte MMPI) 
   overflow-x: hidden;
 }
 
-#swakigxlzp .gt_stub {
+#pwzoyqyuqk .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -264,7 +268,7 @@ The data used in this study is sourced from the NVM (Nederlandse Verkorte MMPI) 
   padding-right: 5px;
 }
 
-#swakigxlzp .gt_stub_row_group {
+#pwzoyqyuqk .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -278,15 +282,15 @@ The data used in this study is sourced from the NVM (Nederlandse Verkorte MMPI) 
   vertical-align: top;
 }
 
-#swakigxlzp .gt_row_group_first td {
+#pwzoyqyuqk .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#swakigxlzp .gt_row_group_first th {
+#pwzoyqyuqk .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#swakigxlzp .gt_summary_row {
+#pwzoyqyuqk .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -296,16 +300,16 @@ The data used in this study is sourced from the NVM (Nederlandse Verkorte MMPI) 
   padding-right: 5px;
 }
 
-#swakigxlzp .gt_first_summary_row {
+#pwzoyqyuqk .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#swakigxlzp .gt_first_summary_row.thick {
+#pwzoyqyuqk .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#swakigxlzp .gt_last_summary_row {
+#pwzoyqyuqk .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -315,7 +319,7 @@ The data used in this study is sourced from the NVM (Nederlandse Verkorte MMPI) 
   border-bottom-color: #D3D3D3;
 }
 
-#swakigxlzp .gt_grand_summary_row {
+#pwzoyqyuqk .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -325,7 +329,7 @@ The data used in this study is sourced from the NVM (Nederlandse Verkorte MMPI) 
   padding-right: 5px;
 }
 
-#swakigxlzp .gt_first_grand_summary_row {
+#pwzoyqyuqk .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -335,7 +339,7 @@ The data used in this study is sourced from the NVM (Nederlandse Verkorte MMPI) 
   border-top-color: #D3D3D3;
 }
 
-#swakigxlzp .gt_last_grand_summary_row_top {
+#pwzoyqyuqk .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -345,11 +349,11 @@ The data used in this study is sourced from the NVM (Nederlandse Verkorte MMPI) 
   border-bottom-color: #D3D3D3;
 }
 
-#swakigxlzp .gt_striped {
+#pwzoyqyuqk .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#swakigxlzp .gt_table_body {
+#pwzoyqyuqk .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -358,7 +362,7 @@ The data used in this study is sourced from the NVM (Nederlandse Verkorte MMPI) 
   border-bottom-color: #D3D3D3;
 }
 
-#swakigxlzp .gt_footnotes {
+#pwzoyqyuqk .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -372,7 +376,7 @@ The data used in this study is sourced from the NVM (Nederlandse Verkorte MMPI) 
   border-right-color: #D3D3D3;
 }
 
-#swakigxlzp .gt_footnote {
+#pwzoyqyuqk .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -381,7 +385,7 @@ The data used in this study is sourced from the NVM (Nederlandse Verkorte MMPI) 
   padding-right: 5px;
 }
 
-#swakigxlzp .gt_sourcenotes {
+#pwzoyqyuqk .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -395,7 +399,7 @@ The data used in this study is sourced from the NVM (Nederlandse Verkorte MMPI) 
   border-right-color: #D3D3D3;
 }
 
-#swakigxlzp .gt_sourcenote {
+#pwzoyqyuqk .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -403,63 +407,63 @@ The data used in this study is sourced from the NVM (Nederlandse Verkorte MMPI) 
   padding-right: 5px;
 }
 
-#swakigxlzp .gt_left {
+#pwzoyqyuqk .gt_left {
   text-align: left;
 }
 
-#swakigxlzp .gt_center {
+#pwzoyqyuqk .gt_center {
   text-align: center;
 }
 
-#swakigxlzp .gt_right {
+#pwzoyqyuqk .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#swakigxlzp .gt_font_normal {
+#pwzoyqyuqk .gt_font_normal {
   font-weight: normal;
 }
 
-#swakigxlzp .gt_font_bold {
+#pwzoyqyuqk .gt_font_bold {
   font-weight: bold;
 }
 
-#swakigxlzp .gt_font_italic {
+#pwzoyqyuqk .gt_font_italic {
   font-style: italic;
 }
 
-#swakigxlzp .gt_super {
+#pwzoyqyuqk .gt_super {
   font-size: 65%;
 }
 
-#swakigxlzp .gt_footnote_marks {
+#pwzoyqyuqk .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#swakigxlzp .gt_asterisk {
+#pwzoyqyuqk .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#swakigxlzp .gt_indent_1 {
+#pwzoyqyuqk .gt_indent_1 {
   text-indent: 5px;
 }
 
-#swakigxlzp .gt_indent_2 {
+#pwzoyqyuqk .gt_indent_2 {
   text-indent: 10px;
 }
 
-#swakigxlzp .gt_indent_3 {
+#pwzoyqyuqk .gt_indent_3 {
   text-indent: 15px;
 }
 
-#swakigxlzp .gt_indent_4 {
+#pwzoyqyuqk .gt_indent_4 {
   text-indent: 20px;
 }
 
-#swakigxlzp .gt_indent_5 {
+#pwzoyqyuqk .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -507,32 +511,28 @@ The data used in this study is sourced from the NVM (Nederlandse Verkorte MMPI) 
   </tfoot>
 </table>
 </div>
-</div>
-<div id="data-visualization" class="section level1">
-<h1><strong>Data Visualization</strong></h1>
-<p>To better visualize the relationship between consciousness and stress, a bar plot was created using the ggplot2 package in R. This plot displays the distribution of consciousness categories (neutral, unwholesome, and wholesome) among the participants.</p>
+<p><em>Data Visualization</em>
+To better visualize the relationship between consciousness and stress, a bar plot was created using the ggplot2 package in R. This plot displays the distribution of consciousness categories (neutral, unwholesome, and wholesome) among the participants.</p>
 <p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
-</div>
-<div id="regression-model" class="section level1">
-<h1><strong>Regression Model</strong></h1>
-<p>A regression analysis was performed to examine the association between consciousness and depression. The primary predictor variable was unwholesome consciousness, and extraversion and shyness were also included as covariates. Odds ratios (OR) were calculated to determine the strength of association between the predictor variables and depression. Confidence intervals (CI) and p-values were used to assess the statistical significance of the results.</p>
-<div id="zpudamhigd" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#zpudamhigd table {
+<p><em>Regression Model</em>
+A regression analysis was performed to examine the association between consciousness and depression. The primary predictor variable was unwholesome consciousness, and extraversion and shyness were also included as covariates. Odds ratios (OR) were calculated to determine the strength of association between the predictor variables and depression. Confidence intervals (CI) and p-values were used to assess the statistical significance of the results.</p>
+<div id="umapkxaxrh" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#umapkxaxrh table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#zpudamhigd thead, #zpudamhigd tbody, #zpudamhigd tfoot, #zpudamhigd tr, #zpudamhigd td, #zpudamhigd th {
+#umapkxaxrh thead, #umapkxaxrh tbody, #umapkxaxrh tfoot, #umapkxaxrh tr, #umapkxaxrh td, #umapkxaxrh th {
   border-style: none;
 }
 
-#zpudamhigd p {
+#umapkxaxrh p {
   margin: 0;
   padding: 0;
 }
 
-#zpudamhigd .gt_table {
+#umapkxaxrh .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -558,12 +558,12 @@ The data used in this study is sourced from the NVM (Nederlandse Verkorte MMPI) 
   border-left-color: #D3D3D3;
 }
 
-#zpudamhigd .gt_caption {
+#umapkxaxrh .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#zpudamhigd .gt_title {
+#umapkxaxrh .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -575,7 +575,7 @@ The data used in this study is sourced from the NVM (Nederlandse Verkorte MMPI) 
   border-bottom-width: 0;
 }
 
-#zpudamhigd .gt_subtitle {
+#umapkxaxrh .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -587,7 +587,7 @@ The data used in this study is sourced from the NVM (Nederlandse Verkorte MMPI) 
   border-top-width: 0;
 }
 
-#zpudamhigd .gt_heading {
+#umapkxaxrh .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -599,13 +599,13 @@ The data used in this study is sourced from the NVM (Nederlandse Verkorte MMPI) 
   border-right-color: #D3D3D3;
 }
 
-#zpudamhigd .gt_bottom_border {
+#umapkxaxrh .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#zpudamhigd .gt_col_headings {
+#umapkxaxrh .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -620,7 +620,7 @@ The data used in this study is sourced from the NVM (Nederlandse Verkorte MMPI) 
   border-right-color: #D3D3D3;
 }
 
-#zpudamhigd .gt_col_heading {
+#umapkxaxrh .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -640,7 +640,7 @@ The data used in this study is sourced from the NVM (Nederlandse Verkorte MMPI) 
   overflow-x: hidden;
 }
 
-#zpudamhigd .gt_column_spanner_outer {
+#umapkxaxrh .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -652,15 +652,15 @@ The data used in this study is sourced from the NVM (Nederlandse Verkorte MMPI) 
   padding-right: 4px;
 }
 
-#zpudamhigd .gt_column_spanner_outer:first-child {
+#umapkxaxrh .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#zpudamhigd .gt_column_spanner_outer:last-child {
+#umapkxaxrh .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#zpudamhigd .gt_column_spanner {
+#umapkxaxrh .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -672,11 +672,11 @@ The data used in this study is sourced from the NVM (Nederlandse Verkorte MMPI) 
   width: 100%;
 }
 
-#zpudamhigd .gt_spanner_row {
+#umapkxaxrh .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#zpudamhigd .gt_group_heading {
+#umapkxaxrh .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -702,7 +702,7 @@ The data used in this study is sourced from the NVM (Nederlandse Verkorte MMPI) 
   text-align: left;
 }
 
-#zpudamhigd .gt_empty_group_heading {
+#umapkxaxrh .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -717,15 +717,15 @@ The data used in this study is sourced from the NVM (Nederlandse Verkorte MMPI) 
   vertical-align: middle;
 }
 
-#zpudamhigd .gt_from_md > :first-child {
+#umapkxaxrh .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#zpudamhigd .gt_from_md > :last-child {
+#umapkxaxrh .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#zpudamhigd .gt_row {
+#umapkxaxrh .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -744,7 +744,7 @@ The data used in this study is sourced from the NVM (Nederlandse Verkorte MMPI) 
   overflow-x: hidden;
 }
 
-#zpudamhigd .gt_stub {
+#umapkxaxrh .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -757,7 +757,7 @@ The data used in this study is sourced from the NVM (Nederlandse Verkorte MMPI) 
   padding-right: 5px;
 }
 
-#zpudamhigd .gt_stub_row_group {
+#umapkxaxrh .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -771,15 +771,15 @@ The data used in this study is sourced from the NVM (Nederlandse Verkorte MMPI) 
   vertical-align: top;
 }
 
-#zpudamhigd .gt_row_group_first td {
+#umapkxaxrh .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#zpudamhigd .gt_row_group_first th {
+#umapkxaxrh .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#zpudamhigd .gt_summary_row {
+#umapkxaxrh .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -789,16 +789,16 @@ The data used in this study is sourced from the NVM (Nederlandse Verkorte MMPI) 
   padding-right: 5px;
 }
 
-#zpudamhigd .gt_first_summary_row {
+#umapkxaxrh .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#zpudamhigd .gt_first_summary_row.thick {
+#umapkxaxrh .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#zpudamhigd .gt_last_summary_row {
+#umapkxaxrh .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -808,7 +808,7 @@ The data used in this study is sourced from the NVM (Nederlandse Verkorte MMPI) 
   border-bottom-color: #D3D3D3;
 }
 
-#zpudamhigd .gt_grand_summary_row {
+#umapkxaxrh .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -818,7 +818,7 @@ The data used in this study is sourced from the NVM (Nederlandse Verkorte MMPI) 
   padding-right: 5px;
 }
 
-#zpudamhigd .gt_first_grand_summary_row {
+#umapkxaxrh .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -828,7 +828,7 @@ The data used in this study is sourced from the NVM (Nederlandse Verkorte MMPI) 
   border-top-color: #D3D3D3;
 }
 
-#zpudamhigd .gt_last_grand_summary_row_top {
+#umapkxaxrh .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -838,11 +838,11 @@ The data used in this study is sourced from the NVM (Nederlandse Verkorte MMPI) 
   border-bottom-color: #D3D3D3;
 }
 
-#zpudamhigd .gt_striped {
+#umapkxaxrh .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#zpudamhigd .gt_table_body {
+#umapkxaxrh .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -851,7 +851,7 @@ The data used in this study is sourced from the NVM (Nederlandse Verkorte MMPI) 
   border-bottom-color: #D3D3D3;
 }
 
-#zpudamhigd .gt_footnotes {
+#umapkxaxrh .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -865,7 +865,7 @@ The data used in this study is sourced from the NVM (Nederlandse Verkorte MMPI) 
   border-right-color: #D3D3D3;
 }
 
-#zpudamhigd .gt_footnote {
+#umapkxaxrh .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -874,7 +874,7 @@ The data used in this study is sourced from the NVM (Nederlandse Verkorte MMPI) 
   padding-right: 5px;
 }
 
-#zpudamhigd .gt_sourcenotes {
+#umapkxaxrh .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -888,7 +888,7 @@ The data used in this study is sourced from the NVM (Nederlandse Verkorte MMPI) 
   border-right-color: #D3D3D3;
 }
 
-#zpudamhigd .gt_sourcenote {
+#umapkxaxrh .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -896,63 +896,63 @@ The data used in this study is sourced from the NVM (Nederlandse Verkorte MMPI) 
   padding-right: 5px;
 }
 
-#zpudamhigd .gt_left {
+#umapkxaxrh .gt_left {
   text-align: left;
 }
 
-#zpudamhigd .gt_center {
+#umapkxaxrh .gt_center {
   text-align: center;
 }
 
-#zpudamhigd .gt_right {
+#umapkxaxrh .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#zpudamhigd .gt_font_normal {
+#umapkxaxrh .gt_font_normal {
   font-weight: normal;
 }
 
-#zpudamhigd .gt_font_bold {
+#umapkxaxrh .gt_font_bold {
   font-weight: bold;
 }
 
-#zpudamhigd .gt_font_italic {
+#umapkxaxrh .gt_font_italic {
   font-style: italic;
 }
 
-#zpudamhigd .gt_super {
+#umapkxaxrh .gt_super {
   font-size: 65%;
 }
 
-#zpudamhigd .gt_footnote_marks {
+#umapkxaxrh .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#zpudamhigd .gt_asterisk {
+#umapkxaxrh .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#zpudamhigd .gt_indent_1 {
+#umapkxaxrh .gt_indent_1 {
   text-indent: 5px;
 }
 
-#zpudamhigd .gt_indent_2 {
+#umapkxaxrh .gt_indent_2 {
   text-indent: 10px;
 }
 
-#zpudamhigd .gt_indent_3 {
+#umapkxaxrh .gt_indent_3 {
   text-indent: 15px;
 }
 
-#zpudamhigd .gt_indent_4 {
+#umapkxaxrh .gt_indent_4 {
   text-indent: 20px;
 }
 
-#zpudamhigd .gt_indent_5 {
+#umapkxaxrh .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
