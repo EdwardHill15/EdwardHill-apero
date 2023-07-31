@@ -18,32 +18,32 @@ output: html_document
 <p>Unwholesome consciousness has been hypothesized to play a pivotal role in individuals’ susceptibility to stress-related mental health issues, particularly depression. This state of consciousness involves an inclination towards negative thoughts, feelings of hopelessness, and a tendency to perceive adverse situations more intensely. As a result, individuals with unwholesome consciousness may be more prone to experiencing the adverse effects of stress on their mental well-being.</p>
 <p>In this pursuit of understanding the complex interplay between consciousness and stress, the current study delves into the relationship between unwholesome consciousness and depression. The investigation utilizes data from the Nederlandse Verkorte MMPI (NVM) datamatrix, which provides comprehensive information on various characteristics related to consciousness, stress, and other relevant factors.</p>
 <p>The overarching goal of this research is to shed light on whether unwholesome consciousness serves as a predictor for depression. Additionally, the study aims to elucidate how this relationship compares to other personality traits, such as extraversion and shyness, known to influence stress responses. By employing advanced statistical techniques, particularly regression analysis to estimate odds ratios, we aim to quantify the strength of association between consciousness and depression.</p>
-<p>Moreover, the study also takes into account the potential influence of gender and behavior factors, such as negativism, somatization, and psychopathology, in the relationship between consciousness and stress. By exploring these additional variables, we aim to gain a more nuanced understanding of how consciousness operates in the broader context of stress-related outcomes.</p>
-<p>The findings of this research hold the promise of contributing to the development of targeted interventions and strategies for stress management and mental well-being. By identifying the role of unwholesome consciousness in depression, we can potentially design interventions aimed at promoting more positive cognitive patterns and emotional well-being. Furthermore, the exploration of other personality traits and behavior factors in relation to consciousness can provide valuable insights into the diverse pathways through which stress manifests in individuals’ lives.</p>
+<p>Moreover, the study explicitly examines the distribution of behavior factors, including negativism, somatization, shyness, psychopathology, and extraversion, based on consciousness categories. By exploring these additional variables, we aim to gain a more nuanced understanding of how consciousness operates in the broader context of stress-related outcomes.</p>
+<p>The findings of this research hold the promise of contributing to the development of targeted interventions and strategies for stress management and mental well-being. By identifying the role of unwholesome consciousness in depression and its relationship to behavior factors, we can potentially design interventions aimed at promoting more positive cognitive patterns and emotional well-being. Furthermore, the exploration of other personality traits and behavior factors in relation to consciousness can provide valuable insights into the diverse pathways through which stress manifests in individuals’ lives.</p>
 <p>In conclusion, this study endeavors to provide a comprehensive examination of the relationship between consciousness and stress-related outcomes, with a particular focus on unwholesome consciousness as a potential predictor of depression. By addressing the pressing need to understand the mechanisms underlying stress and depression, we aspire to contribute to the advancement of mental health research and the development of effective intervention strategies.</p>
 </div>
 <div id="methods" class="section level1">
 <h1><strong>Methods</strong></h1>
-<p><em>Data Collection</em>
+<p><strong>Data Collection</strong>
 The data used in this study is sourced from the NVM (Nederlandse Verkorte MMPI) datamatrix, a dataset containing information on various characteristics related to consciousness, stress, and related factors. The dataset includes 189 rows and 11 columns, with details on age, gender, negativism, somatization, shyness, psychopathology, extraversion, and consciousness (categorized as neutral, unwholesome, or wholesome).</p>
-<p><em>NVM dataframe</em></p>
-<div id="pwzoyqyuqk" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#pwzoyqyuqk table {
+<p><strong>NVM dataframe</strong></p>
+<div id="dzktwqxgcp" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#dzktwqxgcp table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#pwzoyqyuqk thead, #pwzoyqyuqk tbody, #pwzoyqyuqk tfoot, #pwzoyqyuqk tr, #pwzoyqyuqk td, #pwzoyqyuqk th {
+#dzktwqxgcp thead, #dzktwqxgcp tbody, #dzktwqxgcp tfoot, #dzktwqxgcp tr, #dzktwqxgcp td, #dzktwqxgcp th {
   border-style: none;
 }
 
-#pwzoyqyuqk p {
+#dzktwqxgcp p {
   margin: 0;
   padding: 0;
 }
 
-#pwzoyqyuqk .gt_table {
+#dzktwqxgcp .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -69,12 +69,12 @@ The data used in this study is sourced from the NVM (Nederlandse Verkorte MMPI) 
   border-left-color: #D3D3D3;
 }
 
-#pwzoyqyuqk .gt_caption {
+#dzktwqxgcp .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#pwzoyqyuqk .gt_title {
+#dzktwqxgcp .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -86,7 +86,7 @@ The data used in this study is sourced from the NVM (Nederlandse Verkorte MMPI) 
   border-bottom-width: 0;
 }
 
-#pwzoyqyuqk .gt_subtitle {
+#dzktwqxgcp .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -98,7 +98,7 @@ The data used in this study is sourced from the NVM (Nederlandse Verkorte MMPI) 
   border-top-width: 0;
 }
 
-#pwzoyqyuqk .gt_heading {
+#dzktwqxgcp .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -110,13 +110,13 @@ The data used in this study is sourced from the NVM (Nederlandse Verkorte MMPI) 
   border-right-color: #D3D3D3;
 }
 
-#pwzoyqyuqk .gt_bottom_border {
+#dzktwqxgcp .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#pwzoyqyuqk .gt_col_headings {
+#dzktwqxgcp .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -131,7 +131,7 @@ The data used in this study is sourced from the NVM (Nederlandse Verkorte MMPI) 
   border-right-color: #D3D3D3;
 }
 
-#pwzoyqyuqk .gt_col_heading {
+#dzktwqxgcp .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -151,7 +151,7 @@ The data used in this study is sourced from the NVM (Nederlandse Verkorte MMPI) 
   overflow-x: hidden;
 }
 
-#pwzoyqyuqk .gt_column_spanner_outer {
+#dzktwqxgcp .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -163,15 +163,15 @@ The data used in this study is sourced from the NVM (Nederlandse Verkorte MMPI) 
   padding-right: 4px;
 }
 
-#pwzoyqyuqk .gt_column_spanner_outer:first-child {
+#dzktwqxgcp .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#pwzoyqyuqk .gt_column_spanner_outer:last-child {
+#dzktwqxgcp .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#pwzoyqyuqk .gt_column_spanner {
+#dzktwqxgcp .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -183,11 +183,11 @@ The data used in this study is sourced from the NVM (Nederlandse Verkorte MMPI) 
   width: 100%;
 }
 
-#pwzoyqyuqk .gt_spanner_row {
+#dzktwqxgcp .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#pwzoyqyuqk .gt_group_heading {
+#dzktwqxgcp .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -213,7 +213,7 @@ The data used in this study is sourced from the NVM (Nederlandse Verkorte MMPI) 
   text-align: left;
 }
 
-#pwzoyqyuqk .gt_empty_group_heading {
+#dzktwqxgcp .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -228,15 +228,15 @@ The data used in this study is sourced from the NVM (Nederlandse Verkorte MMPI) 
   vertical-align: middle;
 }
 
-#pwzoyqyuqk .gt_from_md > :first-child {
+#dzktwqxgcp .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#pwzoyqyuqk .gt_from_md > :last-child {
+#dzktwqxgcp .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#pwzoyqyuqk .gt_row {
+#dzktwqxgcp .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -255,7 +255,7 @@ The data used in this study is sourced from the NVM (Nederlandse Verkorte MMPI) 
   overflow-x: hidden;
 }
 
-#pwzoyqyuqk .gt_stub {
+#dzktwqxgcp .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -268,7 +268,7 @@ The data used in this study is sourced from the NVM (Nederlandse Verkorte MMPI) 
   padding-right: 5px;
 }
 
-#pwzoyqyuqk .gt_stub_row_group {
+#dzktwqxgcp .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -282,15 +282,15 @@ The data used in this study is sourced from the NVM (Nederlandse Verkorte MMPI) 
   vertical-align: top;
 }
 
-#pwzoyqyuqk .gt_row_group_first td {
+#dzktwqxgcp .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#pwzoyqyuqk .gt_row_group_first th {
+#dzktwqxgcp .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#pwzoyqyuqk .gt_summary_row {
+#dzktwqxgcp .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -300,16 +300,16 @@ The data used in this study is sourced from the NVM (Nederlandse Verkorte MMPI) 
   padding-right: 5px;
 }
 
-#pwzoyqyuqk .gt_first_summary_row {
+#dzktwqxgcp .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#pwzoyqyuqk .gt_first_summary_row.thick {
+#dzktwqxgcp .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#pwzoyqyuqk .gt_last_summary_row {
+#dzktwqxgcp .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -319,7 +319,7 @@ The data used in this study is sourced from the NVM (Nederlandse Verkorte MMPI) 
   border-bottom-color: #D3D3D3;
 }
 
-#pwzoyqyuqk .gt_grand_summary_row {
+#dzktwqxgcp .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -329,7 +329,7 @@ The data used in this study is sourced from the NVM (Nederlandse Verkorte MMPI) 
   padding-right: 5px;
 }
 
-#pwzoyqyuqk .gt_first_grand_summary_row {
+#dzktwqxgcp .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -339,7 +339,7 @@ The data used in this study is sourced from the NVM (Nederlandse Verkorte MMPI) 
   border-top-color: #D3D3D3;
 }
 
-#pwzoyqyuqk .gt_last_grand_summary_row_top {
+#dzktwqxgcp .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -349,11 +349,11 @@ The data used in this study is sourced from the NVM (Nederlandse Verkorte MMPI) 
   border-bottom-color: #D3D3D3;
 }
 
-#pwzoyqyuqk .gt_striped {
+#dzktwqxgcp .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#pwzoyqyuqk .gt_table_body {
+#dzktwqxgcp .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -362,7 +362,7 @@ The data used in this study is sourced from the NVM (Nederlandse Verkorte MMPI) 
   border-bottom-color: #D3D3D3;
 }
 
-#pwzoyqyuqk .gt_footnotes {
+#dzktwqxgcp .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -376,7 +376,7 @@ The data used in this study is sourced from the NVM (Nederlandse Verkorte MMPI) 
   border-right-color: #D3D3D3;
 }
 
-#pwzoyqyuqk .gt_footnote {
+#dzktwqxgcp .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -385,7 +385,7 @@ The data used in this study is sourced from the NVM (Nederlandse Verkorte MMPI) 
   padding-right: 5px;
 }
 
-#pwzoyqyuqk .gt_sourcenotes {
+#dzktwqxgcp .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -399,7 +399,7 @@ The data used in this study is sourced from the NVM (Nederlandse Verkorte MMPI) 
   border-right-color: #D3D3D3;
 }
 
-#pwzoyqyuqk .gt_sourcenote {
+#dzktwqxgcp .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -407,63 +407,63 @@ The data used in this study is sourced from the NVM (Nederlandse Verkorte MMPI) 
   padding-right: 5px;
 }
 
-#pwzoyqyuqk .gt_left {
+#dzktwqxgcp .gt_left {
   text-align: left;
 }
 
-#pwzoyqyuqk .gt_center {
+#dzktwqxgcp .gt_center {
   text-align: center;
 }
 
-#pwzoyqyuqk .gt_right {
+#dzktwqxgcp .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#pwzoyqyuqk .gt_font_normal {
+#dzktwqxgcp .gt_font_normal {
   font-weight: normal;
 }
 
-#pwzoyqyuqk .gt_font_bold {
+#dzktwqxgcp .gt_font_bold {
   font-weight: bold;
 }
 
-#pwzoyqyuqk .gt_font_italic {
+#dzktwqxgcp .gt_font_italic {
   font-style: italic;
 }
 
-#pwzoyqyuqk .gt_super {
+#dzktwqxgcp .gt_super {
   font-size: 65%;
 }
 
-#pwzoyqyuqk .gt_footnote_marks {
+#dzktwqxgcp .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#pwzoyqyuqk .gt_asterisk {
+#dzktwqxgcp .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#pwzoyqyuqk .gt_indent_1 {
+#dzktwqxgcp .gt_indent_1 {
   text-indent: 5px;
 }
 
-#pwzoyqyuqk .gt_indent_2 {
+#dzktwqxgcp .gt_indent_2 {
   text-indent: 10px;
 }
 
-#pwzoyqyuqk .gt_indent_3 {
+#dzktwqxgcp .gt_indent_3 {
   text-indent: 15px;
 }
 
-#pwzoyqyuqk .gt_indent_4 {
+#dzktwqxgcp .gt_indent_4 {
   text-indent: 20px;
 }
 
-#pwzoyqyuqk .gt_indent_5 {
+#dzktwqxgcp .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -511,28 +511,28 @@ The data used in this study is sourced from the NVM (Nederlandse Verkorte MMPI) 
   </tfoot>
 </table>
 </div>
-<p><em>Data Visualization</em>
+<p><strong>Data Visualization</strong>
 To better visualize the relationship between consciousness and stress, a bar plot was created using the ggplot2 package in R. This plot displays the distribution of consciousness categories (neutral, unwholesome, and wholesome) among the participants.</p>
 <p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
-<p><em>Regression Model</em>
+<p><strong>Regression Model</strong>
 A regression analysis was performed to examine the association between consciousness and depression. The primary predictor variable was unwholesome consciousness, and extraversion and shyness were also included as covariates. Odds ratios (OR) were calculated to determine the strength of association between the predictor variables and depression. Confidence intervals (CI) and p-values were used to assess the statistical significance of the results.</p>
-<div id="umapkxaxrh" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#umapkxaxrh table {
+<div id="isyscnbdhu" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#isyscnbdhu table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#umapkxaxrh thead, #umapkxaxrh tbody, #umapkxaxrh tfoot, #umapkxaxrh tr, #umapkxaxrh td, #umapkxaxrh th {
+#isyscnbdhu thead, #isyscnbdhu tbody, #isyscnbdhu tfoot, #isyscnbdhu tr, #isyscnbdhu td, #isyscnbdhu th {
   border-style: none;
 }
 
-#umapkxaxrh p {
+#isyscnbdhu p {
   margin: 0;
   padding: 0;
 }
 
-#umapkxaxrh .gt_table {
+#isyscnbdhu .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -558,12 +558,12 @@ A regression analysis was performed to examine the association between conscious
   border-left-color: #D3D3D3;
 }
 
-#umapkxaxrh .gt_caption {
+#isyscnbdhu .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#umapkxaxrh .gt_title {
+#isyscnbdhu .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -575,7 +575,7 @@ A regression analysis was performed to examine the association between conscious
   border-bottom-width: 0;
 }
 
-#umapkxaxrh .gt_subtitle {
+#isyscnbdhu .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -587,7 +587,7 @@ A regression analysis was performed to examine the association between conscious
   border-top-width: 0;
 }
 
-#umapkxaxrh .gt_heading {
+#isyscnbdhu .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -599,13 +599,13 @@ A regression analysis was performed to examine the association between conscious
   border-right-color: #D3D3D3;
 }
 
-#umapkxaxrh .gt_bottom_border {
+#isyscnbdhu .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#umapkxaxrh .gt_col_headings {
+#isyscnbdhu .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -620,7 +620,7 @@ A regression analysis was performed to examine the association between conscious
   border-right-color: #D3D3D3;
 }
 
-#umapkxaxrh .gt_col_heading {
+#isyscnbdhu .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -640,7 +640,7 @@ A regression analysis was performed to examine the association between conscious
   overflow-x: hidden;
 }
 
-#umapkxaxrh .gt_column_spanner_outer {
+#isyscnbdhu .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -652,15 +652,15 @@ A regression analysis was performed to examine the association between conscious
   padding-right: 4px;
 }
 
-#umapkxaxrh .gt_column_spanner_outer:first-child {
+#isyscnbdhu .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#umapkxaxrh .gt_column_spanner_outer:last-child {
+#isyscnbdhu .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#umapkxaxrh .gt_column_spanner {
+#isyscnbdhu .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -672,11 +672,11 @@ A regression analysis was performed to examine the association between conscious
   width: 100%;
 }
 
-#umapkxaxrh .gt_spanner_row {
+#isyscnbdhu .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#umapkxaxrh .gt_group_heading {
+#isyscnbdhu .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -702,7 +702,7 @@ A regression analysis was performed to examine the association between conscious
   text-align: left;
 }
 
-#umapkxaxrh .gt_empty_group_heading {
+#isyscnbdhu .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -717,15 +717,15 @@ A regression analysis was performed to examine the association between conscious
   vertical-align: middle;
 }
 
-#umapkxaxrh .gt_from_md > :first-child {
+#isyscnbdhu .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#umapkxaxrh .gt_from_md > :last-child {
+#isyscnbdhu .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#umapkxaxrh .gt_row {
+#isyscnbdhu .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -744,7 +744,7 @@ A regression analysis was performed to examine the association between conscious
   overflow-x: hidden;
 }
 
-#umapkxaxrh .gt_stub {
+#isyscnbdhu .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -757,7 +757,7 @@ A regression analysis was performed to examine the association between conscious
   padding-right: 5px;
 }
 
-#umapkxaxrh .gt_stub_row_group {
+#isyscnbdhu .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -771,15 +771,15 @@ A regression analysis was performed to examine the association between conscious
   vertical-align: top;
 }
 
-#umapkxaxrh .gt_row_group_first td {
+#isyscnbdhu .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#umapkxaxrh .gt_row_group_first th {
+#isyscnbdhu .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#umapkxaxrh .gt_summary_row {
+#isyscnbdhu .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -789,16 +789,16 @@ A regression analysis was performed to examine the association between conscious
   padding-right: 5px;
 }
 
-#umapkxaxrh .gt_first_summary_row {
+#isyscnbdhu .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#umapkxaxrh .gt_first_summary_row.thick {
+#isyscnbdhu .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#umapkxaxrh .gt_last_summary_row {
+#isyscnbdhu .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -808,7 +808,7 @@ A regression analysis was performed to examine the association between conscious
   border-bottom-color: #D3D3D3;
 }
 
-#umapkxaxrh .gt_grand_summary_row {
+#isyscnbdhu .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -818,7 +818,7 @@ A regression analysis was performed to examine the association between conscious
   padding-right: 5px;
 }
 
-#umapkxaxrh .gt_first_grand_summary_row {
+#isyscnbdhu .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -828,7 +828,7 @@ A regression analysis was performed to examine the association between conscious
   border-top-color: #D3D3D3;
 }
 
-#umapkxaxrh .gt_last_grand_summary_row_top {
+#isyscnbdhu .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -838,11 +838,11 @@ A regression analysis was performed to examine the association between conscious
   border-bottom-color: #D3D3D3;
 }
 
-#umapkxaxrh .gt_striped {
+#isyscnbdhu .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#umapkxaxrh .gt_table_body {
+#isyscnbdhu .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -851,7 +851,7 @@ A regression analysis was performed to examine the association between conscious
   border-bottom-color: #D3D3D3;
 }
 
-#umapkxaxrh .gt_footnotes {
+#isyscnbdhu .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -865,7 +865,7 @@ A regression analysis was performed to examine the association between conscious
   border-right-color: #D3D3D3;
 }
 
-#umapkxaxrh .gt_footnote {
+#isyscnbdhu .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -874,7 +874,7 @@ A regression analysis was performed to examine the association between conscious
   padding-right: 5px;
 }
 
-#umapkxaxrh .gt_sourcenotes {
+#isyscnbdhu .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -888,7 +888,7 @@ A regression analysis was performed to examine the association between conscious
   border-right-color: #D3D3D3;
 }
 
-#umapkxaxrh .gt_sourcenote {
+#isyscnbdhu .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -896,63 +896,63 @@ A regression analysis was performed to examine the association between conscious
   padding-right: 5px;
 }
 
-#umapkxaxrh .gt_left {
+#isyscnbdhu .gt_left {
   text-align: left;
 }
 
-#umapkxaxrh .gt_center {
+#isyscnbdhu .gt_center {
   text-align: center;
 }
 
-#umapkxaxrh .gt_right {
+#isyscnbdhu .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#umapkxaxrh .gt_font_normal {
+#isyscnbdhu .gt_font_normal {
   font-weight: normal;
 }
 
-#umapkxaxrh .gt_font_bold {
+#isyscnbdhu .gt_font_bold {
   font-weight: bold;
 }
 
-#umapkxaxrh .gt_font_italic {
+#isyscnbdhu .gt_font_italic {
   font-style: italic;
 }
 
-#umapkxaxrh .gt_super {
+#isyscnbdhu .gt_super {
   font-size: 65%;
 }
 
-#umapkxaxrh .gt_footnote_marks {
+#isyscnbdhu .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#umapkxaxrh .gt_asterisk {
+#isyscnbdhu .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#umapkxaxrh .gt_indent_1 {
+#isyscnbdhu .gt_indent_1 {
   text-indent: 5px;
 }
 
-#umapkxaxrh .gt_indent_2 {
+#isyscnbdhu .gt_indent_2 {
   text-indent: 10px;
 }
 
-#umapkxaxrh .gt_indent_3 {
+#isyscnbdhu .gt_indent_3 {
   text-indent: 15px;
 }
 
-#umapkxaxrh .gt_indent_4 {
+#isyscnbdhu .gt_indent_4 {
   text-indent: 20px;
 }
 
-#umapkxaxrh .gt_indent_5 {
+#isyscnbdhu .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -1019,17 +1019,16 @@ A regression analysis was performed to examine the association between conscious
 </div>
 <div id="results" class="section level1">
 <h1><strong>Results</strong></h1>
-<p>The bar plot representing the distribution of consciousness categories shows that 48% of participants reported neutral consciousness, 28% reported unwholesome consciousness, and 24% reported wholesome consciousness.</p>
-<p>The regression analysis results revealed that unwholesome consciousness was significantly associated with depression (OR = 1.29, 95% CI: 1.17 to 1.43, p &lt; 0.001). This suggests that individuals with unwholesome consciousness were 1.29 times more likely to experience depression compared to those with neutral consciousness. On the other hand, extraversion (OR = 1.00, 95% CI: 0.99 to 1.01, p = 0.6) and shyness (OR = 1.00, 95% CI: 1.00 to 1.01, p = 0.7) showed weaker or non-significant associations with depression.</p>
-<ul>
-<li><p>The <strong>odds ratio</strong> for <strong>Unwholesome Consciousness</strong> is <strong>1.29 (95% CI 1.17, 1.43; p&lt;0.001)</strong>.</p></li>
-<li><p>The <strong>odds ratio</strong> for <strong>Extraversion</strong> is <strong>1.00 (95% CI 0.99, 1.01; p=0.6)</strong>.</p></li>
-<li><p>The <strong>odds ratio</strong> for <strong>Shyness</strong> is <strong>1.00 (95% CI 1.00, 1.01; p=0.7)</strong>.</p></li>
-</ul>
+<p>The bar plot representing the distribution of consciousness categories illustrates that 48% of participants reported neutral consciousness, 28% reported unwholesome consciousness, and 24% reported wholesome consciousness. Additionally, the visualization explicitly shows the distribution of behavior factors based on consciousness categories. Among those with unwholesome consciousness, the median levels of negativism, somatization, shyness, psychopathology, and extraversion were 23, 16, 12, 3.0, and 15.0, respectively (with interquartile ranges indicated in parentheses). The visualization also highlights similar patterns for participants with neutral and wholesome consciousness.</p>
+<p>The regression analysis results revealed that unwholesome consciousness was significantly associated with depression (OR = 1.29, 95% CI: 1.17 to 1.43, p &lt; 0.001). This suggests that individuals with unwholesome consciousness were 1.29 times more likely to experience depression compared to those with neutral consciousness. Conversely, extraversion (OR = 1.00, 95% CI: 0.99 to 1.01, p = 0.6) and shyness (OR = 1.00, 95% CI: 1.00 to 1.01, p = 0.7) showed weaker or non-significant associations with depression.</p>
+<p>The odds ratio for Unwholesome Consciousness as a predictor for depression is 1.29 (95% CI 1.17, 1.43; p &lt; 0.001).</p>
+<p>The odds ratio for Extraversion as a predictor for depression is 1.00 (95% CI 0.99, 1.01; p = 0.6).</p>
+<p>The odds ratio for Shyness as a predictor for depression is 1.00 (95% CI 1.00, 1.01; p = 0.7).</p>
 </div>
-<div id="interpretation-of-visualization-results-for-different-categories-and-regression-analysis" class="section level1">
-<h1><strong>Interpretation of Visualization Results for Different Categories and Regression Analysis</strong></h1>
-<p>The visualization results provided valuable insights into the distribution of consciousness categories among participants based on different categories, such as gender and behavior types. Additionally, the regression analysis offered further understanding of the relationship between consciousness and depression, along with the influence of other behavior factors. Let’s discuss these findings in detail:</p>
+<div id="discussion" class="section level1">
+<h1><strong>Discussion</strong></h1>
+<p><strong>Interpretation of Visualization Results for Different Categories and Regression Analysis</strong>
+The visualization results provided valuable insights into the distribution of consciousness categories among participants based on different categories, such as gender and behavior types. Additionally, the regression analysis offered further understanding of the relationship between consciousness and depression, along with the influence of other behavior factors. Let’s discuss these findings in detail:</p>
 <p><strong>Interpretation by Gender</strong>
 The visualization displayed the distribution of consciousness categories (neutral, unwholesome, and wholesome) among female and male participants. The results revealed that the proportion of individuals with each consciousness category was relatively similar for both genders. Around 48% of participants from each gender reported having a neutral consciousness, while 28% had unwholesome consciousness, and 24% had wholesome consciousness.</p>
 <p>The similarity in the distribution of consciousness categories between genders implies that gender may not play a significant role in determining consciousness levels. This suggests that the impact of consciousness on stress might not be strongly influenced by gender in this study.</p>
@@ -1051,5 +1050,5 @@ Integrating the results of the visualization and regression analysis, we can inf
 </div>
 <div id="conclusion" class="section level1">
 <h1><strong>Conclusion</strong></h1>
-<p>The interpretation of visualization results for different categories, such as gender and behavior types, alongside the regression analysis, has shed light on the association between consciousness and stress-related outcomes. Unwholesome consciousness emerged as a significant predictor of depression, irrespective of gender. However, further research is necessary to investigate the role of behavior factors in the relationship between consciousness and stress, contributing to more targeted and effective interventions for stress management and mental well-being.</p>
+<p>This study explored the relationship between consciousness and stress, focusing on “unwholesome” consciousness as a potential predictor of depression. The results indicate that unwholesome consciousness is significantly associated with depression, while extraversion and shyness show weaker or non-significant associations. Furthermore, the explicit examination of behavior factors in relation to consciousness provides valuable insights into the diverse pathways through which stress manifests in individuals’ lives. Gender does not seem to strongly influence consciousness levels in relation to stress in this particular study. The findings underscore the importance of addressing negative valence in mental health interventions and suggest potential avenues for future research in this area.</p>
 </div>
