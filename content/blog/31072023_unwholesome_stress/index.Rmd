@@ -92,7 +92,7 @@ nvm %>%
   group_by(consciousness) %>% 
   dplyr::summarise(negativism = round(mean(negativism),1), somatization = round(mean(somatization),1),extraversion = round(mean(extraversion),1), shyness = round(mean(shyness),1)) %>% 
 gt() %>% 
-tab_options(heading.title.font.size = px(24)) %>%
+tab_options(heading.title.font.size = px(12)) %>%
   tab_header(
     title = md("**Table 2: stress grouped by Consciousness**"),
     subtitle = md("*NVM dataframe for levels of consciousness with selected variables for analysis*")
@@ -265,11 +265,11 @@ my_theme_table3 <-
     # Some gt cusomization
     "as_gt-lst:addl_cmds"= list(
       #make the font size small
-      tab_spanner = rlang::expr(gt::tab_options(table.font.size = 'small')),
+      tab_spanner = rlang::expr(gt::tab_options(table.font.size = 'large')),
       # add a custom title and subtitle to every table
       user_added1 = rlang::expr(gt::tab_header(
-        title = "Table 3: Regression Analysis Results", 
-        subtitle = "Unwholesome Consciousness, Extraversion and Shyness as predictors for Depression")),
+        title = md("**Table 3: Regression Analysis Results**"), 
+        subtitle = md("*Unwholesome Consciousness, Extraversion and Shyness as predictors for Depression*"))),
       # add a costum data source note
       user_added2 = rlang::expr(gt::tab_source_note(source_note = "Source:https://github.com/EdwardHill15/Data")),
       # stripe the table rows
