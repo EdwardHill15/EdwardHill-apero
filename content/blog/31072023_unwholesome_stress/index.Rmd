@@ -35,14 +35,13 @@ The findings of this research hold the promise of contributing to the developmen
 The data used in this study is sourced from the NVM (Nederlandse Verkorte MMPI) datamatrix, a dataset containing information on various characteristics related to consciousness and stress. The dataset includes 188 rows and 11 columns, with details on age, gender, negativism, somatization, shyness, psychopathology, extraversion, and consciousness (categorized as neutral, unwholesome, or wholesome).
 
 ```{r echo=FALSE, warning=FALSE, include=FALSE}
-NVM1_Data <- read_delim("D:/DiagnostiekOnderzoek/Data/NVM1_Data.csv", 
+nvm <- read_delim("D:/DiagnostiekOnderzoek/Data/NVM1_Data.csv", 
                         delim = ";", escape_double = FALSE, trim_ws = TRUE)
-NVM <- NVM1_Data
-nvm <- NVM
 colnames(nvm) <- c("code", "nr", "name", "gender", "age", 
                    "status", "negativism","somatization", "shyness", 
                    "psychopathology", "extraversion")
 nvm <- na.omit(nvm)
+
 nvm$consciousness <- ifelse(nvm$psychopathology >= 6, "unwholesome", 
                             ifelse(nvm$psychopathology < 2.0, "wholesome", "neutral"))
 nvm$consciousness <- as.factor(nvm$consciousness)
@@ -68,23 +67,28 @@ table1
 ```
 
 ```{r echo=FALSE, warning=FALSE, include=FALSE}
-long <- nvm %>% 
-  mutate(gender = ifelse(gender == "f", "Female", "Male")) %>%
-  select(gender, 
-         consciousness, 
-         negativism, 
-         somatization, 
-         shyness, 
-         extraversion) %>% 
-  pivot_longer(cols = c("negativism", "somatization", "shyness", "extraversion"),
-               names_to = "symptoms", values_to = "impact") %>% 
-  group_by(consciousness,
-           gender,
-           symptoms) %>% 
-  summarise(avg_impact = mean(impact))
-long$symptoms <- as.factor(long$symptoms) 
-long$consciousness <- fct_reorder(long$consciousness, long$avg_impact)
-long <- as.data.frame(long)
+# create the barplot in ggplot with geom_errorbar for total group (N = 188)
+# https://www.youtube.com/watch?v=AmeVAVxvSqg
+
+df <- nvm[, c(4:5,7:9,11:12)]
+df_long <- gather(df, nvm_factor, score, c(3:6))
+
+df_long$nvm_factor <- as.factor(df_long$nvm_factor)
+df_long$consciousness <- as.factor(df_long$consciousness)
+
+df_group <- df_long %>% 
+  group_by(consciousness, nvm_factor) %>% 
+  dplyr::summarise(mean=mean(score),
+                   sd=sd(score))
+
+df_gender <- df_long %>% 
+  group_by(consciousness, gender, nvm_factor) %>% 
+  dplyr::summarise(mean=mean(score),
+                   sd=sd(score))
+
+
+df_group$consciousness <- fct_reorder(df_group$consciousness, df_group$mean)
+df_gender$consciousness <- fct_reorder(df_gender$consciousness, df_gender$mean)
 ```
 
 **Data Visualization**
@@ -93,33 +97,40 @@ To better visualize the relationship between consciousness and stress, two bar p
 **Description of Results from Figures 1 and 2**
 
 ```{r echo=FALSE, warning=FALSE}
-long %>% 
-    ggplot(aes(consciousness, avg_impact, fill = symptoms)) +
-    geom_col(position = "dodge",
-           width = .75) +
-    scale_x_discrete(expand = c(.3, .3)) +
-    scale_fill_manual(values = c("grey90", "grey60", "grey25", "grey1")) +
-    # facet_wrap(~ gender, strip.position = "bottom") +
-    theme_minimal() +
-    theme(panel.grid.minor = element_blank(),
-          panel.grid.major.x = element_blank(),
-          strip.placement = "outside",
-          panel.spacing = unit(0, "cm"),
-          legend.position = "bottom",
-          strip.text = element_text(size = 18, face = "bold"),
-          plot.title.position = "plot",
-          plot.title = element_text(size = 22, face = "bold",
-                                    margin = margin(b = 20)),
-          plot.subtitle = element_text(size = 12, color = "grey30",
-                                       margin = margin(b = 20)),
-          plot.caption.position = "plot",
-          plot.caption = element_text(hjust = 0,
-                                      color = "grey50",
-                                      size = 10)) +
-    labs(fill = "", x = "", y = "Stress Experience",
-         caption = "Data from {NVM database} The Vibrational Mind.",
-         title = "Figure 1: consciousness and stress",
-         subtitle = "The relation between unwholesome consciousness and stress experience.")
+ggplot(df_group,aes(consciousness,
+                    mean, 
+                    fill = nvm_factor,
+                    ymin = mean-sd/3,
+                    ymax = mean+sd/3)) +
+  geom_col(width = .7, position = position_dodge(.8),
+           color = "grey20") +
+  geom_errorbar(position = position_dodge(.8),
+                width = .3) +
+  scale_fill_manual(values = c("grey90", "grey60", "grey20", "grey1")) +
+  scale_y_continuous(expand = expansion(0),
+                     limits = c(0,30),
+                     breaks = seq(0,30,5)) +
+  theme_classic() +
+  theme(panel.grid.minor = element_blank(),
+        panel.grid.major.x = element_blank(),
+        strip.placement = "outside",
+        panel.spacing = unit(0, "cm"),
+        legend.position = "bottom",
+        strip.text = element_text(size = 20, face = "bold"),
+        plot.title.position = "plot",
+        plot.title = element_text(size = 20, face = "bold",
+                                  margin = margin(b = 20)),
+        plot.subtitle = element_text(size = 11, color = "grey30",
+                                     margin = margin(b = 20)),
+        plot.caption.position = "plot",
+        plot.caption = element_text(hjust = 0,
+                                    color = "grey50",
+                                    size = 9)) +
+  labs(fill = "", x = "", y = "Stress Experience",
+       caption = "Data from {NVM database} The Vibrational Mind.",
+       title = "Figure 1: Consciousness and Stress Experience",
+       subtitle = "The relation between unwholesome consciousness and stress experience in the total group (N = 188).")
+
 ```
 
 **Figure 1: Consciousness and Stress**
@@ -140,33 +151,44 @@ Among participants with unwholesome consciousness, higher levels of negativism, 
 Participants with neutral and wholesome consciousness exhibited lower levels of negativism, somatization, shyness, and psychopathology, as well as higher levels of extraversion. This indicates a potential link between positive cognitive patterns and reduced stress-related behaviors and emotional challenges.
 
 ```{r echo=FALSE, warning=FALSE}
-long %>% 
-    ggplot(aes(consciousness, avg_impact, fill = symptoms)) +
-    geom_col(position = "dodge",
-           width = .75) +
-    scale_x_discrete(expand = c(.3, .3)) +
-    scale_fill_manual(values = c("grey90", "grey60", "grey25", "grey1")) +
-    facet_wrap(~ gender, strip.position = "bottom") +
-    theme_minimal() +
-    theme(panel.grid.minor = element_blank(),
-          panel.grid.major.x = element_blank(),
-          strip.placement = "outside",
-          panel.spacing = unit(0, "cm"),
-          legend.position = "bottom",
-          strip.text = element_text(size = 18, face = "bold"),
-          plot.title.position = "plot",
-          plot.title = element_text(size = 22, face = "bold",
-                                    margin = margin(b = 20)),
-          plot.subtitle = element_text(size = 12, color = "grey30",
-                                       margin = margin(b = 20)),
-          plot.caption.position = "plot",
-          plot.caption = element_text(hjust = 0,
-                                      color = "grey50",
-                                      size = 10)) +
-    labs(fill = "", x = "", y = "Stress Experience",
-         caption = "Data from {NVM database} The Vibrational Mind.",
-         title = "Figure 2: consciousness and stress by gender",
-         subtitle = "The relation between unwholesome consciousness and stress experience by gender.")
+df_gender <- df_gender %>% 
+  mutate(gender = ifelse(gender == "f", "Female", "Male"))
+
+ggplot(df_gender,aes(consciousness,
+                    mean, 
+                    fill = nvm_factor,
+                    ymin = mean-sd/3,
+                    ymax = mean+sd/3)) +
+  geom_col(width = .7, position = position_dodge(.8),
+           color = "grey20") +
+  geom_errorbar(position = position_dodge(.8),
+                width = .3) +
+  facet_wrap(~ gender, strip.position = "bottom") +
+  scale_x_discrete(expand = c(.3, .3)) +
+  scale_fill_manual(values = c("grey90", "grey60", "grey20", "grey1")) +
+  scale_y_continuous(expand = expansion(0),
+                     limits = c(0,30),
+                     breaks = seq(0,30,5)) +
+  theme_minimal() +
+  theme(panel.grid.minor = element_blank(),
+        panel.grid.major.x = element_blank(),
+        strip.placement = "outside",
+        panel.spacing = unit(0, "cm"),
+        legend.position = "bottom",
+        strip.text = element_text(size = 20, face = "bold"),
+        plot.title.position = "plot",
+        plot.title = element_text(size = 20, face = "bold",
+                                  margin = margin(b = 20)),
+        plot.subtitle = element_text(size = 11, color = "grey30",
+                                     margin = margin(b = 20)),
+        plot.caption.position = "plot",
+        plot.caption = element_text(hjust = 0,
+                                    color = "grey50",
+                                    size = 9)) +
+  labs(fill = "", x = "", y = "Stress Experience",
+       caption = "Data from {NVM database} The Vibrational Mind.",
+       title = "Consciousness and Stress Experience by Gender",
+       subtitle = "The relation between unwholesome consciousness and stress experience by gender (Female and Male).")
 ```
 
 **Figure 2: Consciousness and Stress by Gender**
