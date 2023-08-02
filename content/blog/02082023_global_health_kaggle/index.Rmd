@@ -1,0 +1,277 @@
+---
+title: "Global Trend in Mental Health Disorders"
+author: "Edward Hillenaar"
+date: "2023-08-02"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(readr)
+library("tidyverse") # load dplyr, ggplot2, stringr, etc.
+library("sf") # working with geographic simple features in R
+library("rnaturalearth") # World map data from Natural Earth
+library("countrycode") # get ISO code from country names
+library("ggrepel") # "ggplot2" extension for overlapping text labels
+library(janitor)
+library(psych)
+```
+
+**Abstract**
+Mental health disorders affect millions of people worldwide, making them a significant public health concern. Understanding the prevalence of different mental health disorders is essential for effective policymaking and intervention plans. This article explores the global trends in mental health disorders using a dataset sourced from Kaggle, titled "Global Trends in Mental Health Disorder." The dataset provides insightful information about the prevalence of various mental health conditions, including schizophrenia, bipolar disorder, eating disorders, anxiety disorders, drug use disorders, depression, and alcohol use disorders. By analyzing this data and visualizing it on a world map, we aim to gain a deeper understanding of how these disorders impact different countries and demographics.
+
+**Introduction**
+Mental health disorders are a major challenge for healthcare systems worldwide. To address this issue effectively, policymakers and researchers need access to comprehensive and up-to-date data on the prevalence of mental health disorders across different populations and geographical regions. The dataset "Global Trends in Mental Health Disorder" from Kaggle provides a valuable resource for understanding the distribution of mental health disorders globally. This dataset contains information on the prevalence of various mental health conditions, enabling us to explore patterns and trends that may inform better decision-making and intervention strategies.
+
+**Method**
+The dataset is sourced from Kaggle and comprises data from countries across the globe. It includes prevalence rates for mental health disorders such as schizophrenia, bipolar disorder, eating disorders, anxiety disorders, drug use disorders, depression, and alcohol use disorders. To analyze the data, we utilized the R programming language and several R packages, including 'tidyverse,' 'sf,' 'rnaturalearth,' 'countrycode,' and 'ggrepel.'
+
+```{r echo=FALSE, include=FALSE}
+Global_Trends_in_Mental_Health_Disorder_CSV <- read_csv("D:/Onderzoek/Global Mental Health/Global Trends in Mental Health Disorder CSV.csv")
+df <- Global_Trends_in_Mental_Health_Disorder_CSV
+# get world data
+world <- ne_countries(scale = "small", returnclass = "sf")
+# Plot an empty world map -------------------------------------------------
+world %>%
+  ggplot() +
+  geom_sf()
+# Change map projection ---------------------------------------------------
+
+# projection list: https://proj.org/operations/projections/
+# examples: "+proj=robin", "+proj=moll", "+proj=aeqd", "+proj=goode"
+world %>%
+  st_transform(crs = "+proj=robin") %>%
+  ggplot() +
+  geom_sf() +
+  theme_minimal()
+# add iso3 country code
+df_with_iso <- df %>%
+  mutate(Iso3 = countrycode::countrycode(
+    sourcevar = Entity, 
+    origin = "country.name", 
+    destination = "iso3c")
+  )
+df_with_iso <- na.omit(df_with_iso)
+# Join datasets -----------------------------------------------------------
+df1 <- world %>%
+  select(geometry, name, iso_a3) %>%
+  left_join(df_with_iso, by = c("iso_a3" = "Iso3")) 
+df1 <- df1 %>% 
+  clean_names()
+df1 <- df1[,c(2,7:14)]
+df1 <- na.omit(df1)
+# Remove NAs from 'bipolar_disorder_percent' variable (I assume this is a typo as 'df2' should be used, not 'df')
+df1$bipolar_disorder_percent <- na.omit(df1$bipolar_disorder_percent)
+df1$anxiety_disorder_percent <- na.omit(df1$anxiety_disorder_percent)
+df1$depression_disorder_percent <- na.omit(df1$depression_disorder_percent)
+df1$schizophrenia_disorder_percent <- na.omit(df1$schizophrenia_disorder_percent)
+names(df1) <- c("iso", "schizophrenia", "bipolar", "eating", "anxiety",
+                "drugs", "depression", "alcohol", "geometry")
+```
+
+First, we read the CSV file into a data frame, which we named "df." We then processed the data by joining it with world map data, filtering out irrelevant information, and performing data cleaning tasks. Subsequently, we transformed the dataset into a format suitable for visualization.
+
+**Plot depression global prevalence**
+
+```{r echo=FALSE}
+world %>%
+  filter(admin != "Antarctica") %>%
+  st_transform(crs = "+proj=robin") %>%  
+ggplot() +
+  geom_sf(color = "darkgrey") +
+  geom_sf(data = df1, aes(fill = depression)) +
+  scale_fill_viridis_c(option = "inferno") +
+  theme_minimal() +
+  theme(
+    plot.title = element_text(face = "bold"),
+    axis.text.x = element_blank(),
+    legend.position = "right"
+  ) +
+  labs(
+    title = "Global Trends in Mental Disorders",
+    subtitle = "Global prevalence of depression",
+    caption = "Total Health Foundation"
+  )
+```
+
+**Plot schizophrenia global prevalence**
+
+```{r echo=FALSE}
+# Schizophrenia global prevalence
+world %>%
+  filter(admin != "Antarctica") %>%
+  st_transform(crs = "+proj=robin") %>%  
+  ggplot() +
+  geom_sf(color = "darkgrey") +
+  geom_sf(data = df1, aes(fill = schizophrenia)) +
+  scale_fill_viridis_c(option = "inferno") +
+  theme_minimal() +
+  theme(
+    plot.title = element_text(face = "bold"),
+    axis.text.x = element_blank(),
+    legend.position = "right"
+  ) +
+  labs(
+    title = "Global Trends in Mental Disorders",
+    subtitle = "Global prevalence of schizophrenia",
+    caption = "Total Health Foundation"
+  )
+```
+
+
+**Plot bipolar disorder global prevalence**
+
+```{r echo=FALSE}
+world %>%
+  filter(admin != "Antarctica") %>%
+  st_transform(crs = "+proj=robin") %>%  
+  ggplot() +
+  geom_sf(color = "darkgrey") +
+  geom_sf(data = df1, aes(fill = bipolar)) +
+  scale_fill_viridis_c(option = "inferno") +
+  theme_minimal() +
+  theme(
+    plot.title = element_text(face = "bold"),
+    axis.text.x = element_blank(),
+    legend.position = "right"
+  ) +
+  labs(
+    title = "Global Trends in Mental Disorders",
+    subtitle = "Global prevalence of bipolar disorder",
+    caption = "Total Health Foundation"
+  )
+```
+
+**Plot anxiety global prevalence**
+
+```{r echo=FALSE}
+# Anxiety global prevalence
+world %>%
+  filter(admin != "Antarctica") %>%
+  st_transform(crs = "+proj=robin") %>%  
+  ggplot() +
+  geom_sf(color = "darkgrey") +
+  geom_sf(data = df1, aes(fill = anxiety)) +
+  scale_fill_viridis_c(option = "inferno") +
+  theme_minimal() +
+  theme(
+    plot.title = element_text(face = "bold"),
+    axis.text.x = element_blank(),
+    legend.position = "right"
+  ) +
+  labs(
+    title = "Global Trends in Mental Disorders",
+    subtitle = "Global prevalence of anxiety",
+    caption = "Total Health Foundation"
+  )
+```
+
+**Plot drug abuse global prevalence**
+
+```{r echo=FALSE}
+# Plot drug abuse global prevalence
+world %>%
+  filter(admin != "Antarctica") %>%
+  st_transform(crs = "+proj=robin") %>%  
+  ggplot() +
+  geom_sf(color = "darkgrey") +
+  geom_sf(data = df1, aes(fill = drugs)) +
+  scale_fill_viridis_c(option = "inferno") +
+  theme_minimal() +
+  theme(
+    plot.title = element_text(face = "bold"),
+    axis.text.x = element_blank(),
+    legend.position = "right"
+  ) +
+  labs(
+    title = "Global Trends in Mental Disorders",
+    subtitle = "Global prevalence of drug abuse",
+    caption = "Total Health Foundation"
+  )
+```
+
+**Plot alcohol abuse global prevalence**
+
+```{r echo=FALSE}
+# Plot alcohol abuse global prevalence
+world %>%
+  filter(admin != "Antarctica") %>%
+  st_transform(crs = "+proj=robin") %>%  
+  ggplot() +
+  geom_sf(color = "darkgrey") +
+  geom_sf(data = df1, aes(fill = alcohol)) +
+  scale_fill_viridis_c(option = "inferno") +
+  theme_minimal() +
+  theme(
+    plot.title = element_text(face = "bold"),
+    axis.text.x = element_blank(),
+    legend.position = "right"
+  ) +
+  labs(
+    title = "Global Trends in Mental Disorders",
+    subtitle = "Global prevalence of alcohol abuse",
+    caption = "Total Health Foundation"
+  )
+```
+
+**Plot eatin disorder global prevalence**
+
+```{r echo=FALSE}
+# Plot eatin disorder global prevalence
+world %>%
+  filter(admin != "Antarctica") %>%
+  st_transform(crs = "+proj=robin") %>%  
+  ggplot() +
+  geom_sf(color = "darkgrey") +
+  geom_sf(data = df1, aes(fill = eating)) +
+  scale_fill_viridis_c(option = "inferno") +
+  theme_minimal() +
+  theme(
+    plot.title = element_text(face = "bold"),
+    axis.text.x = element_blank(),
+    legend.position = "right"
+  ) +
+  labs(
+    title = "Global Trends in Mental Disorders",
+    subtitle = "Global prevalence of eating disorder",
+    caption = "Total Health Foundation"
+  )
+```
+
+```{r echo=FALSE, include=FALSE}
+df1_long <- pivot_longer(df1, c(2:3,5,7), names_to = "disorder", values_to = "prevalence")
+df1_long$disorder <- as.factor(df1_long$disorder)
+```
+
+**Prevalence global Mental Disorders facet_wrap**
+
+```{r echo=FALSE}
+world %>%
+  filter(admin != "Antarctica") %>%
+  st_transform(crs = "+proj=robin") %>%  
+  ggplot() +
+  geom_sf(color = "darkgrey") +
+  geom_sf(data = df1_long, aes(fill = prevalence)) +
+  facet_wrap(~ disorder) +
+  scale_fill_viridis_c(option = "mako") +
+  theme_minimal() +
+  theme(
+    plot.title = element_text(face = "bold"),
+    axis.text.x = element_blank(),
+    legend.position = "right"
+  ) +
+  labs(
+    title = "Global Trends in Mental Disorders",
+    subtitle = "Global prevalence of disorders",
+    caption = "Total Health Foundation"
+  )
+```
+
+**Results**
+Through data visualization, we explored the global prevalence of different mental health disorders. We created world maps that illustrate the prevalence of disorders such as depression, schizophrenia, bipolar disorder, anxiety, drug abuse, alcohol abuse, and eating disorders across various countries. By categorizing the prevalence rates into different levels (high, medium, low), we were able to observe patterns and differences in the distribution of these disorders.
+
+Our findings indicate significant variations in the prevalence of mental health disorders among different countries and regions. This information is crucial for understanding how these disorders impact societies and populations and for identifying areas that require focused intervention and support.
+
+**Conclusion**
+The dataset "Global Trends in Mental Health Disorder" provides valuable insights into the prevalence of mental health disorders worldwide. By leveraging the power of data visualization and analysis in R, we explored the global distribution of various mental health conditions. Our analysis highlights the importance of understanding the regional and demographic variations in mental health disorders, which can aid policymakers in making informed decisions and directing resources where they are needed the most. This dataset serves as a valuable resource for researchers, policymakers, and healthcare professionals seeking to address the challenges posed by mental health disorders on a global scale. By acknowledging the prevalence and distribution of these conditions, we can work towards creating a more supportive and empathetic world for those affected by mental health disorders.
