@@ -1,0 +1,24 @@
+---
+title: "Taxonomy Prima Experientia"
+author: "Edward Hillenaar"
+date: "2023-08-11"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(readr)
+library("tidyverse") # load dplyr, ggplot2, stringr, etc.
+library("sf") # working with geographic simple features in R
+library("rnaturalearth") # World map data from Natural Earth
+library("countrycode") # get ISO code from country names
+library("ggrepel") # "ggplot2" extension for overlapping text labels
+library(janitor)
+library(psych)
+```
+
+## The Vibrational Mind: A Temporal Metaphysical View on the Essence of Consciousness
+
+# Figure X: Taxonomy of Prima Experientia and Time
+
