@@ -23,3 +23,6 @@ library(psych)
 ## Figure X: Taxonomy of Prima Experientia and Time
 
 ![Figure X: Taxonomy of Prima Experientia and Time](https://raw.githubusercontent.com/EdwardHill15/edwardhill-apero/bb62950af059875da0f8a94eed29174345894863/content/blog/11082023_Taxonomy%20Prima%20Experientia/featured.jpg)
+
+![Figure X: Prima Experientia and Time model]()
+
