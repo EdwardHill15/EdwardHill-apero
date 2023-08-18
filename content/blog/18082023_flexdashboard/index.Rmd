@@ -1,0 +1,14 @@
+---
+title: "Flexdashboard Example Dark Mode Multiple pages"
+author: "Edward Hillenaar"
+date: "2023-08-18"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# This is a link to a flexdashboard example:
+
+[flexdashboard multiple pages in dark mode](https://edwardhill.shinyapps.io/18082023_app2/)
