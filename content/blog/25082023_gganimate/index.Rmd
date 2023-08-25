@@ -1,0 +1,21 @@
+---
+title: "gif embed rmarkdown"
+author: "Edward Hillenaar"
+date: "2023-08-25"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Consciousness_outcom PNG
+
+![Consciousness_combined.png](consciousness_outcome.png)
+
+# Consciousness_combined GIF
+
+![Consciousness_combined GIF](consciousness_combined.gif)
+
+
+
