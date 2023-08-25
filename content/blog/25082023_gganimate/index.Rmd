@@ -9,7 +9,7 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-# Consciousness_outcom PNG
+# Consciousness_outcome PNG
 
 ![Consciousness_combined.png](consciousness_outcome.png)
 
