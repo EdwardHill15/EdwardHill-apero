@@ -29,5 +29,5 @@ The interpretation of the statistical model revealed that the primary contributo
 
 ![Figure 2: Consciousness_combined GIF](consciousness_combined.gif)
 
-Figure 2 is one of the animated visualizations I created of my analyses of the data. 
+Figure 2 is one of the animated visualizations I created with the data using R statistical packages; Rstudio, tidyverse, ggplot2, gganimate, rmarkdown and magick. 
 
