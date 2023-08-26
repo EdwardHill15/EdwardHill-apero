@@ -12,7 +12,7 @@ knitr::opts_chunk$set(echo = TRUE)
 # **Unwholesome consciousness as a predictor for depression and anxiety**
 
 ## **Introduction**
-This is one of the animated visualizations I created of my analyses of data in my PhD-thesis I'm working on. The objective is to write an article in which I relate Theravada Buddhist Psychology of the Abhidhamma (Buddhist Psychology/Philosophy of Consciousness) with Western scientific views on psychopathology. I've found already some interesting results. In my analyses It appears, for example, that unwholesome consciousness is a predictor for depression and anxiety as you can see in the vsiualizations I created recently.
+This is one of the animated visualizations I created of my analyses of data in my PhD-thesis I'm working on. The objective is to write an article in which I relate Theravada Buddhist Psychology of the Abhidhamma (Buddhist Psychology/Philosophy of Consciousness) with Western scientific views on psychopathology. I've found already some interesting results. In my analyses It appears, for example, that unwholesome consciousness is a predictor for depression and anxiety as you can see in the visualizations I created recently.
 
 *Keywords:* Theravada Buddhism, philosophy of mind, psychopathology, Rstudio, tidyverse, ggplot2, Rmarkdown, gganimate, magick
 
