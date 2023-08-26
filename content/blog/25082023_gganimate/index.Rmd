@@ -19,7 +19,7 @@ Subsequently, I formulated a statistical model that confirmed the perspectives o
 
 The interpretation of the statistical model revealed that the primary contributors to 'unwholesome consciousness', leading to mental suffering, are fundamental ignorance and 'desire'. This insight aligns with the framework of Theravada Buddhist Psychology/Philosophy. Therefore, this explanation rooted in Theravada Buddhist principles provides a meaningful understanding of the results obtained from my study.
 
-*Keywords:* Theravada Buddhism, philosophy of mind, psychopathology, Rstudio, tidyverse, ggplot2, Rmarkdown, gganimate, magick
+*Keywords:* Theravada Buddhism, philosophy of mind, psychopathology, structural equation modeling, logistic regression, unwholesome consciousness, depression, anxiety.
 
 ### **Consciousness_outcome PNG**
 
@@ -29,5 +29,5 @@ The interpretation of the statistical model revealed that the primary contributo
 
 ![Figure 2: Consciousness_combined GIF](consciousness_combined.gif)
 
-Figure 2 is one of the animated visualizations I created of my analyses of data in my PhD-thesis I'm working on. The objective is to write an article in which I relate Theravada Buddhist Psychology of the Abhidhamma (Buddhist Psychology/ Philosophy of Consciousness) with Western scientific views on psychopathology. I've found already some interesting results. In my analyses It appears, for example, that unwholesome consciousness is a predictor for depression and anxiety as you can see in the visualizations I created recently.
+Figure 2 is one of the animated visualizations I created of my analyses of the data. 
 
