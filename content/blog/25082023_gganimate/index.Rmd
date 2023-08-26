@@ -1,5 +1,5 @@
 ---
-title: "gif embed rmarkdown"
+title: "Unwholesome Consciousness"
 author: "Edward Hillenaar"
 date: "2023-08-25"
 output: html_document
@@ -9,11 +9,18 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-# Consciousness_outcome PNG
+# **Unwholesome consciousness as a predictor for depression and anxiety.**
+
+## **Introduction**
+This is one of the animated visualizations I created of my analyses of data in my PhD-thesis I'm working on. The objective is to write an article in which I relate Theravada Buddhist Psychology of the Abhidhamma (Buddhist Psychology/Philosophy of Consciousness) with Western scientific views on psychopathology. I've found already some interesting results. In my analyses It appears, for example, that unwholesome consciousness is a predictor for depression and anxiety as you can see in the vsiualizations I created recently.
+
+*Keywords:* Theravada Buddhism, philosophy of mind, psychopathology, Rstudio, tidyverse, ggplot2, Rmarkdown, gganimate, magick
+
+### **Consciousness_outcome PNG**
 
 ![Consciousness_combined.png](consciousness_outcome.png)
 
-# Consciousness_combined GIF
+### **Consciousness_combined GIF**
 
 ![Consciousness_combined GIF](consciousness_combined.gif)
 
