@@ -4,21 +4,10 @@ output: html_document
 ---
 
 ```{r setup, include=FALSE}
-# Theming flexdashboard
-# https://rstudio.github.io/flexdashboard/articles/theme.html
-
+knitr::opts_chunk$set(echo = TRUE)
 ```
 
-Flexdashboard Application
-========================================================
+# Flexdashboard Application
 
 [This is a link to the flexdashboard app](https://edwardhill.shinyapps.io/dashboard/)
 
-Example Data
-========================================================
-
-```{r echo = FALSE}
-library(DT)
-library(tidyverse)
-iris %>% datatable()
-```
