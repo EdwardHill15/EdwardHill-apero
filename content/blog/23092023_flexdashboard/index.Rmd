@@ -1,0 +1,60 @@
+---
+title: "Flexdasboard youtube"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
+    social: [ "twitter", "facebook", "menu"]
+    source_code: embed
+    theme:
+      version: 4
+      bootswatch: minty
+      bg: "#101010"
+      fg: "#FDF7F7"
+      primary: "#ED79F9"
+      navbar-bg: "#3ADAC6"
+      base_font:
+        google: Prompt
+      heading_font:
+        google: Sen
+      code_font:
+        google:
+          # arguments to sass::font_google()
+          family: JetBrains Mono
+          local: false
+---
+
+```{r setup, include=FALSE}
+# Theming flexdashboard
+# https://rstudio.github.io/flexdashboard/articles/theme.html
+
+library(flexdashboard)
+library(vembedr)
+library(tidyverse)
+library(DT)
+```
+
+The Vibrational Mind
+========================================================
+
+```{r echo = FALSE}
+embed_youtube(
+"NHMip21Hkp0",
+width = 1000,
+height = 700,
+ratio = c("16by9", "4by3"),
+frameborder = 0,
+allowfullscreen = TRUE,
+query = NULL
+) %>% 
+  use_start_time("0m00") %>%
+  use_align("center") 
+
+```
+
+Data
+========================================================
+
+```{r}
+iris %>% datatable()
+```
