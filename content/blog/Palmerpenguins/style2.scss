@@ -1,0 +1,29 @@
+/*-- scss:defaults --*/
+$theme-black: #4c4c4c;
+$theme-white: white;
+$theme-teal: #50847B;
+$theme-blue: #76AADB;
+
+$body-bg: $theme-white;
+$body-color: $theme-black;
+$link-color: $theme-teal;
+$code-color: $theme-teal;
+
+$font-size-root: 20px;
+$h1-font-size: $font-size-root * 3;
+
+/*-- scss:rules --*/
+
+body { 
+
+  background: linear-gradient(snow, lightblue); 
+
+}
+
+h1 {
+  color: darken($theme-blue, 50%);
+}
+
+h2, h3, h4 {
+  color: $theme-blue;
+}

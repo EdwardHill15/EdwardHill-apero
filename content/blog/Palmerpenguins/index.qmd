@@ -1,0 +1,195 @@
+---
+title: "Palmerpenquins tidymodels"
+author: "Edward F. Hillenaar"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+number-sections: true
+# format: 
+#     html:
+#       css: "style.css"
+format: 
+  html: 
+    theme: 
+      dark: darkly
+      #- style2.scss
+fig-width: 8
+fig-height: 4
+code-fold: true
+    
+editor: visual
+bibliography: penguins.bib
+nocite: |
+  @*
+csl: apa-6th-edition.csl
+---
+
+## Get started with tidymodels and #TidyTuesday Palmer penguins
+
+This is a blogpost of Julia Silge about rstats tidymodels: [Julia Silge's youtube video](https://juliasilge.com/blog/palmer-penguins/).
+
+```{r}
+#| label: setup
+#| include: false
+
+library(tidyverse)
+library(gt)
+library(tidymodels)
+library(palmerpenguins)
+library(knitr)
+
+```
+
+## Palmerpenguins dataset
+
+The `Palmerpenguins` dataset can be found here: [Palmerpenguins dataset](https://allisonhorst.github.io/palmerpenguins/).
+
+We can build a classification model to distinguish male and female penguins.
+
+## Explore data
+
+```{r}
+glimpse(penguins)
+
+penguins %>% 
+  filter(!is.na(sex)) %>% 
+  ggplot(aes(flipper_length_mm, bill_length_mm, color = sex, size = body_mass_g)) +
+  geom_point(alpha = 0.7) +
+  facet_wrap(~species)
+
+```
+
+```{r}
+penguins_df <- penguins %>% 
+  filter(!is.na(sex)) %>% 
+  select(-year, -island)
+
+```
+
+## Build a model
+
+```{r}
+set.seed(123)
+
+penguin_split <- initial_split(penguins_df, strata = sex)
+penguin_train <- training(penguin_split)
+penguin_test <- testing(penguin_split)
+
+library(rsample)
+# Set seed for reproducibility
+set.seed(123)
+
+# Ungroup the data if it's grouped
+penguin_train <- ungroup(penguin_train)
+
+# Number of bootstrap replicates
+num_replicates <- 250
+
+# Create an empty list to store bootstrap samples
+penguin_boot <- vector("list", num_replicates)
+
+# Perform bootstrap resampling
+for (i in 1:num_replicates) {
+  # Generate random indices with replacement
+  indices <- sample(nrow(penguin_train), replace = TRUE)
+  # Extract bootstrap sample using the random indices
+  penguin_boot[[i]] <- penguin_train[indices, ]
+}
+
+# View the first bootstrap sample
+penguin_boot[[1]]
+
+```
+
+## Setting up a (regression) model to train the data
+
+```{r}
+glm_spec <- logistic_reg() %>% 
+  set_engine("glm")
+
+rf_spec <- rand_forest() %>% 
+  set_mode("classification") %>% 
+  set_engine("ranger")
+
+```
+
+```{r}
+penguin_wf <- workflow() %>% 
+  add_formula(sex ~ .)
+
+penguin_wf
+
+```
+
+```{r}
+#| include: false
+# Define cross-validation folds
+penguin_folds <- vfold_cv(penguin_train, v = 25, strata = "sex")
+
+# Fit the model using cross-validation
+glm_rs <- penguin_wf %>%
+  add_model(glm_spec) %>%
+  fit_resamples(
+    resamples = penguin_folds,
+    control = control_resamples(save_pred = TRUE, verbose = TRUE)
+  )
+
+rf_rs <- penguin_wf %>%
+  add_model(rf_spec) %>%
+  fit_resamples(
+    resamples = penguin_folds,
+    control = control_resamples(save_pred = TRUE, verbose = TRUE)
+  )
+```
+
+## Evaluate modeling
+
+```{r}
+collect_metrics(rf_rs)
+```
+
+```{r}
+collect_metrics(glm_rs)
+```
+
+```{r}
+glm_rs %>% 
+  conf_mat_resampled()
+```
+
+```{r}
+glm_rs %>% 
+  collect_predictions() %>% 
+  group_by(id) %>% 
+  roc_curve(sex, .pred_female) %>% 
+  ggplot(aes(1 - specificity, sensitivity, color = id)) +
+  geom_abline(lty = 2, color = "gray80", size = 1.5) +
+  geom_path(show.legend = FALSE, alpha = 0.6, size = 1.2) +
+  coord_equal()
+  
+```
+
+```{r}
+penguin_final <- penguin_wf %>% 
+  add_model(glm_spec) %>% 
+  last_fit(penguin_split)
+
+penguin_final
+
+collect_metrics(penguin_final)
+collect_predictions(penguin_final) %>% conf_mat(sex, .pred_class)
+
+```
+
+```{r}
+penguin_final$.workflow[[1]] %>% 
+  tidy(exponentiate = TRUE) %>% arrange(estimate)
+```
+
+```{r}
+penguins %>% 
+  filter(!is.na(sex)) %>% 
+  ggplot(aes(bill_depth_mm, bill_length_mm, color = sex, size = body_mass_g)) +
+  geom_point(alpha = 0.7) +
+  facet_wrap(~species)
+```
+
+## References
